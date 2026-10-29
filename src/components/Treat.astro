@@ -8,9 +8,11 @@ const icons = ['pill', 'glass', 'brain'];
 ---
 <section class="section sage" aria-labelledby="treat-title">
   <div class="container">
-    <h2 id="treat-title" class="h2">{T.title}</h2>
-    <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
-    <p class="lead">{T.text}</p>
+    <div class="center">
+      <h2 id="treat-title" class="h2">{T.title}</h2>
+      <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="lead treat-lead">{T.text}</p>
+    </div>
     <ul class="treat" role="list">
       {T.items.map((it: any, i: number) => (
         <li class="lift tcard">
@@ -29,6 +31,8 @@ const icons = ['pill', 'glass', 'brain'];
 </section>
 
 <style>
+  /* Wide enough for the intro to run on two lines on desktop */
+  .treat-lead { max-width: 940px; }
   .treat { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 18px; }
   @media (min-width: 900px) { .treat { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; } }
   .tcard { display: flex; flex-direction: column; padding: 30px 28px; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-card); }
