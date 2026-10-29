@@ -3,7 +3,7 @@
 // src/assets/brand (logo, team photos, badges).
 import type { ImageMetadata } from 'astro';
 
-const files = import.meta.glob<ImageMetadata>('../assets/{lp,facility,brand}/*.{svg,webp,png,jpg}', { eager: true, import: 'default' });
+const files = import.meta.glob<ImageMetadata>('../assets/{lp,facility,brand,reviews}/*.{svg,webp,png,jpg}', { eager: true, import: 'default' });
 
 /** Exact file name, e.g. `Call-Us.svg` or `bedroom-twin-wide.jpg`. */
 export function asset(name: string): ImageMetadata {
