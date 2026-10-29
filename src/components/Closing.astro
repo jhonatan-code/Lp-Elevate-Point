@@ -29,4 +29,8 @@ const { CLOSING: C } = Astro.props.c;
   .closing::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(31 73 65 / .82), rgb(14 38 34 / .97) 75%); }
   .cl-cta { padding-block: 96px 72px; }
   @media (min-width: 1024px) { .cl-cta { padding-block: 136px 96px; } }
+  /* Both buttons share one width (the wider label sets it) */
+  .cl-cta .cta-row { display: grid; grid-template-columns: minmax(0, 300px); justify-content: center; }
+  @media (min-width: 560px) { .cl-cta .cta-row { grid-template-columns: repeat(2, 260px); } }
+  .cl-cta .btn { width: 100%; }
 </style>
