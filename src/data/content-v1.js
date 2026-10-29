@@ -4,7 +4,7 @@
 //
 // What the calls asked most, and where this page answers it:
 //   insurance (741 calls) and Medicaid (498) / Medicare (197), most of them turned away → INSURANCE + FAQ
-//   Downtown Brooklyn location (176) and transit (109)          → HERO, FACILITY, FAQ
+//   Downtown Brooklyn location (176) and transit (109)          → HERO, FACILITY, LOCATION, FAQ
 //   mental health as the main concern (340)                      → TREAT
 //   detox / inpatient (380 together), which are referred out     → FIT
 //   teens and family callers (228)                               → PROGRAMS, FAMILY in FAQ
@@ -22,7 +22,7 @@ export default {
     ...base.HERO,
     h1: 'Outpatient Addiction & Mental Health Treatment in Downtown Brooklyn',
     h2: 'PHP and IOP with morning, daytime and evening schedules.',
-    text: 'Two blocks from the Jay St–MetroTech subway station, with on-site parking. We work with most PPO and POS plans that have out-of-network benefits, and admissions checks yours for free.',
+    text: 'Near the York St and High St subway stations, with on-site parking. We work with most PPO and POS plans that have out-of-network benefits, and admissions checks yours for free.',
     cta: 'Check My Coverage',
     stats: [
       { value: '30+', label: 'Combined Years Experience' },
@@ -120,7 +120,7 @@ export default {
   FACILITY: {
     ...base.FACILITY,
     title: 'A Calm, Sunlit Space in Downtown Brooklyn',
-    text: 'Our center at 203 Jay Street has a doorman lobby, on-site parking, floor-to-ceiling windows and a planted terrace. It is a short walk from the Jay St–MetroTech, York St and Borough Hall stations.',
+    text: 'Our center at 203 Jay Street has a doorman lobby, on-site parking, floor-to-ceiling windows and a planted terrace. York St, High St, Jay St–MetroTech and Borough Hall stations are all nearby.',
   },
 
   VERIFY: {
@@ -144,7 +144,7 @@ export default {
       { q: 'Do you offer detox or inpatient care?', a: 'No, we are an outpatient program. If you need medical detox or a residential stay first, we refer you and you can continue with us afterward.' },
       { q: 'Do you treat teens?', a: 'Yes. Our adolescent IOP and outpatient programs fit around school, and parents take part through family therapy and parent guidance sessions.' },
       { q: 'Can I see a psychiatrist and get medication?', a: 'Yes. Psychiatric evaluations and medication management, including medication-assisted treatment, are part of the program under our Medical Director, an addiction psychiatrist.' },
-      { q: 'Where are you, and can I attend virtually?', a: 'We are at 203 Jay Street in Downtown Brooklyn, near the Jay St–MetroTech station, with on-site parking. Virtual care is also available.' },
+      { q: 'Where are you, and can I attend virtually?', a: 'We are at 203 Jay Street in Downtown Brooklyn, near the York St and High St subway stations, with on-site parking. Virtual care is also available.' },
       { q: 'Is it confidential?', a: 'Yes. Your information and treatment details are protected, and we follow strict confidentiality standards.' },
     ],
   },

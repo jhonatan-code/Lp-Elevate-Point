@@ -140,6 +140,21 @@ export default {
     cta: 'Call to Verify',
   },
 
+  // Map section (added 2026-10-29). Stations and lines are the subway stops around 203 Jay Street (A, C, F, R, 2, 3, 4,
+  // 5: the live LP's "8+ subway lines near us"). Parking is from the live LP's facility text.
+  LOCATION: {
+    title: 'Visit Us in Downtown Brooklyn',
+    text: 'Our center is at 203 Jay Street, near the Brooklyn Bridge, with four subway stations around it and on-site parking for clients and visitors.',
+    // Ordered by distance on the Google map (the pin sits on Jay St between Sands St and Nassau St)
+    stations: [
+      { name: 'York St', lines: ['F'] },
+      { name: 'High St', lines: ['A', 'C'] },
+      { name: 'Jay St–MetroTech', lines: ['A', 'C', 'F', 'R'] },
+      { name: 'Borough Hall', lines: ['2', '3', '4', '5'] },
+    ],
+    parking: 'On-site parking',
+  },
+
   FAQ: {
     kicker: 'Faqs',
     title: 'Commonly Asked Questions About Treatment at Elevate Point',
