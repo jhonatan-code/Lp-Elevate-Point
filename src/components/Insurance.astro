@@ -1,29 +1,52 @@
 ---
-// "We Accept Most Major Insurance Plans": the live LP's text and carrier logos on white tiles.
+// "We Accept Most Major Insurance Plans": the live LP's text, then the carrier logos as one slow, edge-to-edge row that
+// drifts left in a loop. It pauses on hover/focus and with the accessibility menu's "Pause animations"; with reduced
+// motion it stands still and scrolls by hand. The list is rendered twice for a seamless loop; the copy is hidden from
+// screen readers.
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import { asset } from '../lib/assets';
 interface Props { c: any }
 const { INSURANCE: I } = Astro.props.c;
 ---
-<section class="section sage" aria-labelledby="ins-title">
+<section class="section sage ins" aria-labelledby="ins-title">
   <div class="container center">
     <h2 id="ins-title" class="h2">{I.title}</h2>
     <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
     <p class="lead">{I.text}</p>
-    <ul class="logos" role="list">
-      {I.logos.map((l: any) => (
-        <li><Image src={asset(l.file)} alt={l.alt} width={180} loading="lazy" /></li>
+  </div>
+  <div class="marquee">
+    <div class="track">
+      {[0, 1].map((copy) => (
+        <ul class="logos" role="list" aria-label={copy === 0 ? 'Insurance carriers we work with' : undefined} aria-hidden={copy === 1 ? 'true' : undefined}>
+          {I.logos.map((l: any) => (
+            <li><Image src={asset(l.file)} alt={copy === 0 ? l.alt : ''} width={360} loading="lazy" style={l.w ? `width:${l.w}px;max-height:none` : undefined} /></li>
+          ))}
+        </ul>
       ))}
-    </ul>
+    </div>
+  </div>
+  <div class="container center">
     <div class="cta-row"><a href="#benefits-hero" class="btn btn-olive btn-lg" data-cta="insurance-verify"><Icon name="shield" /> {I.cta}</a></div>
   </div>
 </section>
 
 <style>
-  .logos { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  @media (min-width: 640px) { .logos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  @media (min-width: 1024px) { .logos { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; } }
-  .logos li { display: grid; place-items: center; height: 88px; padding: 12px 16px; border-radius: 999px; background: #fff; box-shadow: var(--shadow-card); }
+  /* Edges fade out so logos slide in and out softly */
+  .marquee { margin-top: 48px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+  .track { display: flex; width: max-content; animation: ins-drift 60s linear infinite; }
+  .marquee:hover .track, .marquee:focus-within .track { animation-play-state: paused; }
+  @keyframes ins-drift { to { transform: translateX(-50%); } }
+  .logos { list-style: none; margin: 0; padding: 0 28px; display: flex; gap: 56px; }
+  /* Logos sit straight on the section (no tiles); multiply drops the white of each file into the sage */
+  .logos li { display: grid; place-items: center; min-width: 170px; height: 72px; flex: none; }
   .logos :global(img) { max-height: 52px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+  @media (max-width: 640px) { .logos { gap: 40px; padding: 0 20px; } .logos li { min-width: 130px; height: 60px; } .logos :global(img) { max-height: 44px; } }
+  /* Still for reduced motion and for "Pause animations": one row the visitor can scroll */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee { overflow-x: auto; mask-image: none; }
+    .track { animation: none; }
+    .logos[aria-hidden] { display: none; }
+  }
+  :global(html.a11y-motion) .track { animation-play-state: paused; }
 </style>
