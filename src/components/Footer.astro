@@ -1,5 +1,6 @@
 ---
-// Footer: white logo, address, phone, NYS OASAS logo (shown on elevatepoint.org), cookie settings. No outbound links.
+// Footer: white logo, address, phone, NYS OASAS logo (shown on elevatepoint.org), cookie controls and the elev8.io
+// credit (plain text: an Ads LP has no outbound links).
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import { ORG, PHONE } from '../data/site.js';
@@ -20,12 +21,19 @@ const year = new Date().getFullYear();
   </div>
   <div class="container ftr-legal">
     <p>© {year} {ORG.long}. All rights reserved.</p>
-    <button type="button" class="ftr-btn" data-cookie-prefs>Cookie settings</button>
+    <div class="ftr-links">
+      <button type="button" class="ftr-btn" data-cookie-prefs>Cookie settings</button>
+      <button type="button" class="ftr-btn" data-cookie-dns>Do Not Sell or Share My Personal Information</button>
+    </div>
+    <p class="credit">Designed &amp; developed by <strong>elev8.io</strong></p>
   </div>
 </footer>
 
 <style>
-  .ftr { color: rgb(255 255 255 / .86); padding-block: 40px 28px; border-top: 1px solid rgb(255 255 255 / .14); }
+  /* Divider lines peak in the middle and fade out to both sides (user preference for footer dividers) */
+  .ftr { position: relative; color: rgb(255 255 255 / .86); padding-block: 40px 28px; }
+  .ftr::before, .ftr-legal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / .55) 50%, transparent); }
   .ftr.solid { background: var(--forest-ink); }
   .ftr-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
   .ftr-logo { width: 140px; height: auto; }
@@ -35,6 +43,8 @@ const year = new Date().getFullYear();
   address :global(svg) { width: 18px; height: 18px; color: var(--lime); }
   .oasas { display: inline-flex; padding: 8px 14px; border-radius: 12px; background: #fff; }
   .oasas :global(img) { width: 150px; height: auto; }
-  .ftr-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgb(255 255 255 / .12); font-size: 14px; color: rgb(255 255 255 / .72); }
+  .ftr-legal { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; position: relative; margin-top: 28px; padding-top: 20px; font-size: 14px; color: rgb(255 255 255 / .72); }
+  .ftr-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .credit strong { color: #fff; }
   .ftr-btn { padding: 0; border: 0; background: none; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-size: 14px; }
 </style>
