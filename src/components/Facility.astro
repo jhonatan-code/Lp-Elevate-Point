@@ -1,14 +1,17 @@
 ---
 // "We Elevated Treatment to a Whole New Level": intro, three feature rows with photos in rounded "window" frames, then
-// the live LP's photo strip as a scroll-snap row.
-import { Image } from 'astro:assets';
+// the live LP's photo strip as a scroll-snap row with arrow buttons. A click on a photo opens it large in a native
+// <dialog> (prev/next, Esc or a click outside closes it, focus returns to the photo).
+import { Image, getImage } from 'astro:assets';
+import Icon from './Icon.astro';
 import { asset } from '../lib/assets';
 interface Props { c: any }
 const { FACILITY: F } = Astro.props.c;
+const full = await Promise.all(F.gallery.map((g: any) => getImage({ src: asset(g.file), width: 1600, format: 'webp' })));
 ---
 <section class="section white" aria-labelledby="fac-title">
   <div class="container">
-    <div class="fac-head">
+    <div class="fac-head center">
       <h2 id="fac-title" class="h2">{F.title}</h2>
       <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
       <p class="lead">{F.text}</p>
@@ -23,16 +26,34 @@ const { FACILITY: F } = Astro.props.c;
       ))}
     </ul>
   </div>
-  <div class="strip" role="region" aria-label="Photos of Elevate Point in Brooklyn" tabindex="0">
-    <ul role="list">
-      {F.gallery.map((g: any) => (
-        <li><Image src={asset(g.file)} alt={g.alt} widths={[400, 640]} sizes="(min-width: 768px) 380px, 75vw" loading="lazy" /></li>
-      ))}
-    </ul>
+  <div class="container gal" data-gallery>
+    <div class="strip" role="region" aria-label="Photos of Elevate Point in Brooklyn" tabindex="0" data-strip>
+      <ul role="list">
+        {F.gallery.map((g: any, i: number) => (
+          <li>
+            <button type="button" class="shot" data-full={full[i].src} data-alt={g.alt} data-i={i} aria-label={`Open photo: ${g.alt}`}>
+              <Image src={asset(g.file)} alt="" widths={[400, 640]} sizes="(min-width: 900px) 380px, (min-width: 640px) 46vw, 82vw" loading="lazy" />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <button type="button" class="gal-nav prev" data-dir="-1" aria-label="Previous photos"><Icon name="arrow" /></button>
+    <button type="button" class="gal-nav next" data-dir="1" aria-label="Next photos"><Icon name="arrow" /></button>
   </div>
+  <dialog class="lb" aria-label="Photo viewer" data-lightbox>
+    <figure>
+      <img src="" alt="" data-lb-img />
+      <figcaption data-lb-cap></figcaption>
+    </figure>
+    <button type="button" class="lb-btn lb-close" data-lb-close aria-label="Close photo"><Icon name="plus" /></button>
+    <button type="button" class="lb-btn lb-prev" data-lb-step="-1" aria-label="Previous photo"><Icon name="arrow" /></button>
+    <button type="button" class="lb-btn lb-next" data-lb-step="1" aria-label="Next photo"><Icon name="arrow" /></button>
+  </dialog>
 </section>
 
 <style>
+  .fac-head .lead { max-width: 860px; }
   .feats { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 40px; }
   @media (min-width: 900px) { .feats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; } }
   /* Arched top like the tall windows of the building */
@@ -40,9 +61,82 @@ const { FACILITY: F } = Astro.props.c;
   .feat-img :global(img) { width: 100%; height: 100%; object-fit: cover; }
   .feat h3 { margin-top: 22px; font-size: 22px; }
   .feat p { margin-top: 8px; color: var(--muted); }
-  .strip { margin-top: 64px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-inline: max(16px, calc((100vw - 1200px) / 2)); }
-  .strip:focus-visible { outline-offset: -3px; }
-  .strip ul { list-style: none; margin: 0; padding: 0 0 12px; display: flex; gap: 14px; width: max-content; }
-  .strip li { scroll-snap-align: start; width: min(75vw, 380px); aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; }
-  .strip :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  /* The strip lines up with the content edges: whole photos at both ends, three across on desktop */
+  .strip { margin-top: 64px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; border-radius: var(--radius); }
+  .strip:focus-visible { outline-offset: 3px; }
+  .strip ul { list-style: none; margin: 0; padding: 0 0 12px; display: grid; grid-auto-flow: column; gap: 14px;
+    grid-auto-columns: 82%; }
+  @media (min-width: 640px) { .strip ul { grid-auto-columns: calc((100% - 14px) / 2); } }
+  @media (min-width: 900px) { .strip ul { grid-auto-columns: calc((100% - 28px) / 3); } }
+  .strip li { scroll-snap-align: start; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; }
+  .shot { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: var(--sage); cursor: zoom-in; border-radius: var(--radius); overflow: hidden; }
+  .shot :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  @media (hover: hover) { .shot:hover :global(img) { transform: scale(1.05); } }
+  .shot:focus-visible { outline-offset: -3px; }
+  /* Arrow buttons sit over the strip's ends, 45px like every button */
+  .gal { position: relative; }
+  .gal-nav { position: absolute; top: calc(64px + (100% - 64px - 12px) / 2); z-index: 1; display: grid; place-items: center; width: 45px; height: 45px; padding: 0;
+    border: 0; border-radius: 50%; background: #fff; color: var(--forest); box-shadow: 0 6px 20px rgb(14 38 34 / .22); cursor: pointer; transform: translateY(-50%); transition: background .2s, color .2s, opacity .2s; }
+  .gal-nav:hover { background: var(--forest); color: #fff; }
+  .gal-nav[disabled] { opacity: 0; pointer-events: none; }
+  .gal-nav :global(svg) { width: 20px; height: 20px; }
+  .prev { left: -10px; } .prev :global(svg) { transform: rotate(180deg); }
+  .next { right: -10px; }
+  @media (min-width: 1280px) { .prev { left: -22px; } .next { right: -22px; } }
+  /* Lightbox */
+  .lb { width: min(100vw - 32px, 1200px); max-height: calc(100vh - 32px); padding: 0; border: 0; border-radius: var(--radius); background: var(--forest-ink); overflow: visible; }
+  .lb::backdrop { background: rgb(14 38 34 / .86); }
+  .lb figure { margin: 0; }
+  .lb img { display: block; width: 100%; max-height: calc(100vh - 110px); object-fit: contain; border-radius: var(--radius) var(--radius) 0 0; background: #000; }
+  .lb figcaption { padding: 12px 18px; color: rgb(255 255 255 / .86); font-size: 15px; }
+  .lb-btn { position: absolute; display: grid; place-items: center; width: 45px; height: 45px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: var(--forest); cursor: pointer; box-shadow: 0 6px 20px rgb(0 0 0 / .3); }
+  .lb-btn:hover { background: var(--lime); }
+  .lb-btn :global(svg) { width: 20px; height: 20px; }
+  .lb-close { top: 10px; right: 10px; } .lb-close :global(svg) { transform: rotate(45deg); }
+  .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); }
+  .lb-prev { left: 10px; } .lb-prev :global(svg) { transform: rotate(180deg); }
+  .lb-next { right: 10px; }
+  @media (prefers-reduced-motion: reduce) { .shot :global(img) { transition: none; } }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gal) => {
+    const strip = gal.querySelector<HTMLElement>('[data-strip]')!;
+    const prev = gal.querySelector<HTMLButtonElement>('.gal-nav.prev')!;
+    const next = gal.querySelector<HTMLButtonElement>('.gal-nav.next')!;
+    const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    // One click moves one photo (its width plus the gap)
+    const step = () => (strip.querySelector('li')?.getBoundingClientRect().width || 300) + 14;
+    const sync = () => {
+      prev.disabled = strip.scrollLeft < 4;
+      next.disabled = strip.scrollLeft + strip.clientWidth > strip.scrollWidth - 4;
+    };
+    [prev, next].forEach((b) => b.addEventListener('click', () => strip.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: smooth })));
+    strip.addEventListener('scroll', sync, { passive: true });
+    addEventListener('resize', sync);
+    sync();
+
+    const lb = gal.parentElement!.querySelector<HTMLDialogElement>('[data-lightbox]')!;
+    const img = lb.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const cap = lb.querySelector<HTMLElement>('[data-lb-cap]')!;
+    const shots = [...gal.querySelectorAll<HTMLButtonElement>('.shot')];
+    let cur = 0;
+    const show = (i: number) => {
+      cur = (i + shots.length) % shots.length;
+      img.src = shots[cur].dataset.full || '';
+      img.alt = shots[cur].dataset.alt || '';
+      cap.textContent = `${shots[cur].dataset.alt} (${cur + 1} of ${shots.length})`;
+    };
+    shots.forEach((s, i) => s.addEventListener('click', () => { show(i); lb.showModal(); }));
+    lb.querySelectorAll<HTMLButtonElement>('[data-lb-step]').forEach((b) => b.addEventListener('click', () => show(cur + Number(b.dataset.lbStep))));
+    lb.querySelector('[data-lb-close]')!.addEventListener('click', () => lb.close());
+    // A click on the backdrop (outside the dialog box) closes it
+    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show(cur + 1);
+      if (e.key === 'ArrowLeft') show(cur - 1);
+    });
+    // Focus goes back to the photo that is on screen when the viewer closes
+    lb.addEventListener('close', () => shots[cur].focus());
+  });
+</script>
