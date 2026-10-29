@@ -1,0 +1,14 @@
+---
+// The live page's second form ("Get Instant Insurance Verification" after the FAQ), mobile only: the only block allowed between
+// the FAQ and the final CTA (all-projects page-end rule). On desktop the hero form is the form.
+import LeadForm from './LeadForm.astro';
+---
+<section class="mform" aria-label="Contact form">
+  <div class="container"><LeadForm formId="full" /></div>
+</section>
+
+<style>
+  .mform { padding-block: 8px 56px; background: var(--mist); }
+  .mform :global(.lead-card) { margin-inline: auto; }
+  @media (min-width: 1024px) { .mform { display: none; } }
+</style>

@@ -1,0 +1,41 @@
+---
+// "What We Treat": three condition cards with their feature checklists (the live page's tabs, laid out side by side:
+// no tabs on any project).
+import Icon from './Icon.astro';
+interface Props { c: any }
+const { TREAT: T } = Astro.props.c;
+const icons = ['pill', 'glass', 'brain'];
+---
+<section class="section sage" aria-labelledby="treat-title">
+  <div class="container">
+    <h2 id="treat-title" class="h2">{T.title}</h2>
+    <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="lead">{T.text}</p>
+    <ul class="treat" role="list">
+      {T.items.map((it: any, i: number) => (
+        <li class="lift tcard">
+          <span class="tile" aria-hidden="true"><Icon name={icons[i]} /></span>
+          <h3>{it.title}</h3>
+          <p class="tcard-text">{it.text}</p>
+          <p class="tcard-label">{it.label}</p>
+          <ul class="checks" role="list">
+            {it.features.map((f: string) => <li><Icon name="check" />{f}</li>)}
+          </ul>
+          <a href="#benefits-hero" class="btn btn-forest btn-block" data-cta={`treat-${i}`}>{T.cta}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .treat { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 18px; }
+  @media (min-width: 900px) { .treat { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; } }
+  .tcard { display: flex; flex-direction: column; padding: 30px 28px; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-card); }
+  .tcard h3 { margin-top: 22px; font-size: 24px; }
+  .tcard-text { margin-top: 10px; color: var(--muted); }
+  .tcard-label { margin-top: 22px; font-weight: 700; font-size: 14px; color: var(--forest); }
+  .checks { list-style: none; margin: 10px 0 26px; padding: 0; display: grid; gap: 8px; flex: 1; align-content: start; }
+  .checks li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; }
+  .checks :global(svg) { width: 18px; height: 18px; flex: none; margin-top: 4px; color: var(--olive-dark); }
+</style>

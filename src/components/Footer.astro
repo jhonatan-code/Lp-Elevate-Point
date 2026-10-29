@@ -1,0 +1,40 @@
+---
+// Footer: white logo, address, phone, NYS OASAS logo (shown on elevatepoint.org), cookie settings. No outbound links.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { ORG, PHONE } from '../data/site.js';
+import logo from '../assets/brand/logo-white.webp';
+import oasas from '../assets/brand/oasas.webp';
+interface Props { onPhoto?: boolean }
+const { onPhoto = false } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class:list={['ftr', { solid: !onPhoto }]}>
+  <div class="container ftr-in">
+    <Image src={logo} alt={`${ORG.name} Mind + Body`} width={150} class="ftr-logo" loading="lazy" />
+    <address>
+      <span><Icon name="pin" />{ORG.street}, {ORG.city}</span>
+      <a href={PHONE.href} data-cta="footer-call"><Icon name="phone" />{PHONE.display}</a>
+    </address>
+    <span class="oasas"><Image src={oasas} alt="New York State Office of Addiction Services and Supports" width={180} loading="lazy" /></span>
+  </div>
+  <div class="container ftr-legal">
+    <p>© {year} {ORG.long}. All rights reserved.</p>
+    <button type="button" class="ftr-btn" data-cookie-prefs>Cookie settings</button>
+  </div>
+</footer>
+
+<style>
+  .ftr { color: rgb(255 255 255 / .86); padding-block: 40px 28px; border-top: 1px solid rgb(255 255 255 / .14); }
+  .ftr.solid { background: var(--forest-ink); }
+  .ftr-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+  .ftr-logo { width: 140px; height: auto; }
+  address { display: flex; flex-wrap: wrap; gap: 10px 28px; font-style: normal; }
+  address span, address a { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; }
+  address a:hover { text-decoration: underline; }
+  address :global(svg) { width: 18px; height: 18px; color: var(--lime); }
+  .oasas { display: inline-flex; padding: 8px 14px; border-radius: 12px; background: #fff; }
+  .oasas :global(img) { width: 150px; height: auto; }
+  .ftr-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgb(255 255 255 / .12); font-size: 14px; color: rgb(255 255 255 / .72); }
+  .ftr-btn { padding: 0; border: 0; background: none; color: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-size: 14px; }
+</style>

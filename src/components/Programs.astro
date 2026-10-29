@@ -1,0 +1,56 @@
+---
+// "Outpatient Addiction Treatment in Brooklyn": two photo cards (adults, teens) and the live LP's quote.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { asset } from '../lib/assets';
+import { PHONE } from '../data/site.js';
+interface Props { c: any }
+const { PROGRAMS: P } = Astro.props.c;
+---
+<section class="section white" aria-labelledby="programs-title">
+  <div class="container prog">
+    <div class="prog-head">
+      <h2 id="programs-title" class="h2">{P.title}</h2>
+      <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+      {P.text.map((t: string) => <p class="lead">{t}</p>)}
+      <figure class="quote">
+        <blockquote>{P.quote}</blockquote>
+        <figcaption>{P.quoteBy}</figcaption>
+      </figure>
+      <a href={PHONE.href} class="btn btn-forest" data-cta="programs-call"><Icon name="phone" /> Call {PHONE.display}</a>
+    </div>
+    <ul class="prog-cards" role="list">
+      {P.items.map((it: any) => (
+        <li class="pcard">
+          <Image src={asset(it.photo)} alt={it.alt} widths={[400, 640, 800]} sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 92vw" />
+          <div class="pcard-body">
+            <h3>{it.title}</h3>
+            <p>{it.levels}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .prog { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 1024px) { .prog { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 72px; } }
+  .prog-head .lead + .lead { margin-top: 10px; }
+  .quote { margin: 32px 0 32px; padding: 22px 26px; border-radius: var(--radius); background: var(--sage-soft); border-left: 5px solid var(--olive); }
+  .quote blockquote { margin: 0; font-family: var(--display); font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--forest); }
+  .quote figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); }
+  .prog-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  @media (min-width: 640px) { .prog-cards { grid-template-columns: 1fr 1fr; } }
+  .pcard { position: relative; overflow: hidden; border-radius: var(--radius-lg); background: var(--forest); color: #fff; aspect-ratio: 4 / 3; }
+  @media (min-width: 640px) { .pcard { aspect-ratio: 3 / 4; } }
+  .pcard:nth-child(2) { margin-top: 0; }
+  @media (min-width: 640px) { .pcard:nth-child(2) { margin-top: 56px; } }
+  .pcard :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .pcard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgb(14 38 34 / .88)); }
+  @media (hover: hover) { .pcard:hover :global(img) { transform: scale(1.04); } }
+  .pcard-body { position: absolute; z-index: 1; inset: auto 0 0; padding: 24px; }
+  .pcard-body h3 { color: #fff; font-size: 24px; }
+  .pcard-body p { margin-top: 6px; display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--lime); color: var(--forest-ink); font-weight: 700; font-size: 14px; }
+  @media (prefers-reduced-motion: reduce) { .pcard :global(img) { transition: none; } }
+</style>

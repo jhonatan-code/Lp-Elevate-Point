@@ -1,0 +1,13 @@
+---
+// Touch screens have no hover: a .lift card gets .is-active while it crosses the middle band of the viewport, so it
+// shows the same sweep and icon tilt as on desktop hover. Rendered once per page.
+---
+<script>
+  if (matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle('is-active', e.isIntersecting)),
+      { rootMargin: '-40% 0px -40% 0px' },
+    );
+    document.querySelectorAll('.lift').forEach((el) => io.observe(el));
+  }
+</script>

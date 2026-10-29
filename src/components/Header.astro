@@ -1,0 +1,29 @@
+---
+// Sticky header: logo (not a link: an Ads LP has no outbound links), the live LP's "Text Us" and "Call Us" buttons.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { PHONE, SMS, ORG } from '../data/site.js';
+import logo from '../assets/brand/logo.webp';
+---
+<header class="hdr">
+  <div class="container hdr-in">
+    <Image src={logo} alt={`${ORG.name} Mind + Body`} width={172} class="logo" loading="eager" />
+    <div class="hdr-cta">
+      <a href={SMS.href} class="btn btn-ghost hdr-text" data-cta="header-text">Text Us</a>
+      <a href={PHONE.href} class="btn btn-forest" data-cta="header-call"><Icon name="phone" /><span class="hide-sm">Call</span> {PHONE.display}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .hdr { position: sticky; top: 0; z-index: 50; background: rgb(255 255 255 / .94); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
+  .hdr-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: var(--header-h); }
+  .logo { width: 128px; height: auto; }
+  @media (min-width: 1024px) { .logo { width: 164px; } }
+  .hdr-cta { display: flex; gap: 10px; }
+  .hdr-text { display: none; }
+  @media (min-width: 640px) { .hdr-text { display: inline-flex; } }
+  .hide-sm { display: none; }
+  @media (min-width: 480px) { .hide-sm { display: inline; } }
+  @media (max-width: 380px) { .hdr .btn { padding-inline: 16px; font-size: 15px; } }
+</style>

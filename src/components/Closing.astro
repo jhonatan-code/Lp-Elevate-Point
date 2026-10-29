@@ -1,0 +1,32 @@
+---
+// Final CTA and footer share one photo background. Page end is FAQ → (mobile-only form) → CTA → footer.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import Footer from './Footer.astro';
+import { asset } from '../lib/assets';
+import { PHONE } from '../data/site.js';
+interface Props { c: any }
+const { CLOSING: C } = Astro.props.c;
+---
+<div class="closing dark">
+  <Image src={asset(C.photo)} alt="" class="cl-bg" widths={[640, 1280, 1920]} sizes="100vw" loading="lazy" />
+  <section class="cl-cta" aria-labelledby="cl-title">
+    <div class="container center">
+      <h2 id="cl-title" class="h2">{C.title}</h2>
+      <p class="lead">{C.text}</p>
+      <div class="cta-row">
+        <a href={PHONE.href} class="btn btn-lime btn-lg" data-cta="closing-call"><Icon name="phone" /> Call {PHONE.display}</a>
+        <a href="#benefits-hero" class="btn btn-ghost btn-lg" data-cta="closing-verify">{C.cta}</a>
+      </div>
+    </div>
+  </section>
+  <Footer onPhoto />
+</div>
+
+<style>
+  .closing { position: relative; isolation: isolate; overflow: hidden; }
+  .cl-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+  .closing::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(31 73 65 / .82), rgb(14 38 34 / .97) 75%); }
+  .cl-cta { padding-block: 96px 72px; }
+  @media (min-width: 1024px) { .cl-cta { padding-block: 136px 96px; } }
+</style>

@@ -1,0 +1,29 @@
+---
+// "Our Addiction Treatment Services": the three levels of care as cards, the abbreviation in a moss disc.
+interface Props { c: any }
+const { SERVICES: S } = Astro.props.c;
+---
+<section class="section white" aria-labelledby="svc-title">
+  <div class="container">
+    <h2 id="svc-title" class="h2">{S.title}</h2>
+    <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="lead">{S.text}</p>
+    <ul class="svc" role="list">
+      {S.items.map((it: any) => (
+        <li class="lift scard">
+          <span class="tile" aria-hidden="true">{it.abbr}</span>
+          <h3>{it.title}</h3>
+          <p>{it.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .svc { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 18px; }
+  @media (min-width: 900px) { .svc { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; } }
+  .scard { padding: 30px 28px 32px; border-radius: var(--radius); background: var(--mist); border: 1px solid var(--line); }
+  .scard h3 { margin-top: 22px; font-size: 22px; }
+  .scard p { margin-top: 10px; color: var(--muted); }
+</style>

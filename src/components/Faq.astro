@@ -1,0 +1,39 @@
+---
+// FAQ: sticky heading on desktop, native <details> accordion (works without JS).
+import Icon from './Icon.astro';
+import { PHONE } from '../data/site.js';
+interface Props { c: any }
+const { FAQ: F } = Astro.props.c;
+---
+<section class="section white" aria-labelledby="faq-title">
+  <div class="container faq">
+    <div class="faq-head">
+      <h2 id="faq-title" class="h2">{F.title}</h2>
+      <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="lead">{F.text}</p>
+    </div>
+    <div class="faq-list">
+      {F.items.map((it: any, i: number) => (
+        <details open={i === 0}>
+          <summary><span>{it.q}</span><Icon name="plus" class="faq-icon" /></summary>
+          <p set:html={it.a.replace('{phone}', `<a href="${PHONE.href}" class="text-link">${PHONE.display}</a>`)} />
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq { display: grid; gap: 40px; }
+  @media (min-width: 1024px) { .faq { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 72px; align-items: start; }
+    .faq-head { position: sticky; top: calc(var(--header-h) + 32px); } }
+  .faq-list { display: grid; gap: 12px; }
+  details { border-radius: var(--radius); background: var(--mist); border: 1px solid var(--line); }
+  details[open] { background: var(--sage-soft); border-color: var(--olive); }
+  summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; cursor: pointer; list-style: none;
+    font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--forest); }
+  summary::-webkit-details-marker { display: none; }
+  summary :global(.faq-icon) { width: 22px; height: 22px; flex: none; transition: transform .25s; }
+  details[open] summary :global(.faq-icon) { transform: rotate(45deg); }
+  details p { padding: 0 24px 22px; color: var(--muted); }
+</style>

@@ -1,0 +1,25 @@
+---
+// Fade-in on scroll: each section's content (its .container) rises in once as it enters the viewport. The hero is
+// left out (it is the LCP). Content is hidden only after this script marks <html>, so without JS nothing is hidden;
+// reduced motion and the accessibility menu's "Pause animations" show everything at once.
+---
+<style is:global>
+  html.reveal-on main > section:not(.hero) > .container:not(.is-in) { opacity: 0; transform: translateY(28px); }
+  html.reveal-on main > section:not(.hero) > .container { transition: opacity .7s ease, transform .7s ease; }
+  html.a11y-motion main > section > .container { opacity: 1 !important; transform: none !important; }
+</style>
+
+<script>
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const els = document.querySelectorAll<HTMLElement>('main > section:not(.hero) > .container');
+    // Anything already on screen when the script runs shows at once, so nothing blinks
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -12% 0px' });
+    els.forEach((el) => {
+      if (el.getBoundingClientRect().top < innerHeight) el.classList.add('is-in');
+      else io.observe(el);
+    });
+    document.documentElement.classList.add('reveal-on');
+  }
+</script>

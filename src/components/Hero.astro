@@ -1,0 +1,73 @@
+---
+// Hero: full-bleed lounge photo under a forest wash, the live LP's H1/H2/text, call buttons and counters on the left,
+// the lead form on the right (desktop). On phones the form follows the copy.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import LeadForm from './LeadForm.astro';
+import { asset } from '../lib/assets';
+import { PHONE } from '../data/site.js';
+import oasas from '../assets/brand/oasas.webp';
+import hipaa from '../assets/brand/hipaa-white.svg';
+interface Props { c: any }
+const { HERO } = Astro.props.c;
+---
+<section class="hero dark" aria-labelledby="hero-title">
+  <Image src={asset(HERO.photo)} alt="" class="hero-bg" widths={[640, 960, 1440, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+  <div class="hero-disc d1" aria-hidden="true"></div>
+  <div class="hero-disc d2" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1 id="hero-title">{HERO.h1}</h1>
+      <p class="hero-h2">{HERO.h2}</p>
+      <p class="hero-text">{HERO.text}</p>
+      <div class="cta-row">
+        <a href="#benefits-hero" class="btn btn-lime btn-lg" data-cta="hero-get-help">{HERO.cta} <Icon name="arrow" /></a>
+        <a href={PHONE.href} class="btn btn-ghost btn-lg" data-cta="hero-call"><Icon name="phone" /> Call {PHONE.display}</a>
+      </div>
+      <dl class="stats">
+        {HERO.stats.map((s: any) => (
+          <div><dt>{s.label}</dt><dd>{s.value}</dd></div>
+        ))}
+      </dl>
+      {HERO.trust && (
+        <ul class="trust" role="list">
+          <li class="trust-oasas"><Image src={oasas} alt="New York State Office of Addiction Services and Supports" width={160} /></li>
+          <li><img src={hipaa.src} width="80" height="40" alt="HIPAA compliant" /></li>
+          <li class="trust-stars"><span aria-hidden="true">★★★★★</span> 5-star reviews on Google</li>
+        </ul>
+      )}
+    </div>
+    <div class="hero-form"><LeadForm formId="hero" /></div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; isolation: isolate; overflow: hidden; padding-block: 56px 72px; }
+  @media (min-width: 1024px) { .hero { padding-block: 88px 104px; } }
+  .hero-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+  .hero::before { content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(100deg, rgb(20 53 48 / .96) 0%, rgb(31 73 65 / .9) 45%, rgb(31 73 65 / .55) 100%); }
+  /* Two moss discs, like the round ceiling panels in the photo behind */
+  .hero-disc { position: absolute; z-index: -1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #9fb53a, var(--olive) 55%, #5f7016); opacity: .55; }
+  .d1 { width: 220px; height: 220px; top: -70px; right: 34%; }
+  .d2 { width: 90px; height: 90px; bottom: 40px; left: -30px; opacity: .4; }
+  @media (max-width: 1023px) { .d1 { right: -60px; width: 160px; height: 160px; } }
+  .hero-grid { display: grid; gap: 44px; align-items: center; }
+  @media (min-width: 1024px) { .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: 56px; } }
+  .hero h1 { font-size: clamp(36px, 5.2vw, 64px); }
+  .hero-h2 { margin-top: 18px; font-family: var(--display); font-size: clamp(20px, 2vw, 26px); font-weight: 700; color: var(--lime); letter-spacing: -.01em; }
+  .hero-text { margin-top: 16px; max-width: 600px; font-size: clamp(17px, 1.4vw, 19px); color: rgb(255 255 255 / .88); }
+  .hero .cta-row { margin-top: 32px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 14px 40px; margin: 40px 0 0; padding-top: 28px; border-top: 1px solid rgb(255 255 255 / .2); }
+  .stats div { display: flex; flex-direction: column-reverse; }
+  .stats dd { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(32px, 3.4vw, 44px); line-height: 1; color: #fff; letter-spacing: -.03em; }
+  .stats dt { margin-top: 6px; font-size: 14px; color: rgb(255 255 255 / .78); }
+  .trust { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+  .trust-oasas { display: inline-flex; padding: 6px 12px; border-radius: 10px; background: #fff; }
+  .trust-oasas :global(img) { width: 130px; height: auto; }
+  .trust img[alt='HIPAA compliant'] { height: 36px; width: auto; }
+  .trust-stars { font-weight: 700; font-size: 15px; color: #fff; }
+  .trust-stars span { color: #f2c94c; letter-spacing: 1px; }
+  .hero-form { display: flex; justify-content: center; }
+  @media (min-width: 1024px) { .hero-form { justify-content: flex-end; } }
+</style>

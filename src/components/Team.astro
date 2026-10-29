@@ -1,0 +1,35 @@
+---
+// /v1/ only: the three program leaders from elevatepoint.org/about-us/, photos in arched "window" frames.
+import { Image } from 'astro:assets';
+import { asset } from '../lib/assets';
+interface Props { c: any }
+const { TEAM: T } = Astro.props.c;
+---
+<section class="section white" aria-labelledby="team-title">
+  <div class="container">
+    <h2 id="team-title" class="h2">{T.title}</h2>
+    <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="lead">{T.text}</p>
+    <ul class="team" role="list">
+      {T.items.map((m: any) => (
+        <li class="person">
+          <div class="person-img"><Image src={asset(m.photo)} alt={m.name} widths={[320, 480, 640]} sizes="(min-width: 900px) 360px, 92vw" loading="lazy" /></div>
+          <h3>{m.name}</h3>
+          <p class="role">{m.role}</p>
+          <p class="bio">{m.bio}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .team { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 40px; }
+  @media (min-width: 640px) { .team { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; } }
+  @media (min-width: 900px) { .team { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .person-img { overflow: hidden; aspect-ratio: 4 / 5; border-radius: 999px 999px var(--radius) var(--radius); background: var(--sage); }
+  .person-img :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .person h3 { margin-top: 20px; font-size: 21px; }
+  .role { margin-top: 4px; font-weight: 700; color: var(--olive-text); }
+  .bio { margin-top: 10px; color: var(--muted); font-size: 16px; }
+</style>

@@ -1,0 +1,23 @@
+{
+  "name": "lp-elevate-point",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test:lead": "node --test tests/lead.test.mjs",
+    "postbuild": "node --test tests/lead.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.6",
+    "sharp": "^0.35.5",
+    "@fontsource-variable/manrope": "^5.2.0",
+    "@fontsource-variable/inter": "^5.2.0"
+  }
+}

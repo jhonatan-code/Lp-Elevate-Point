@@ -1,0 +1,48 @@
+---
+// "We Elevated Treatment to a Whole New Level": intro, three feature rows with photos in rounded "window" frames, then
+// the live LP's photo strip as a scroll-snap row.
+import { Image } from 'astro:assets';
+import { asset } from '../lib/assets';
+interface Props { c: any }
+const { FACILITY: F } = Astro.props.c;
+---
+<section class="section white" aria-labelledby="fac-title">
+  <div class="container">
+    <div class="fac-head">
+      <h2 id="fac-title" class="h2">{F.title}</h2>
+      <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="lead">{F.text}</p>
+    </div>
+    <ul class="feats" role="list">
+      {F.items.map((it: any) => (
+        <li class="feat">
+          <div class="feat-img"><Image src={asset(it.photo)} alt={it.alt} widths={[400, 640, 800]} sizes="(min-width: 900px) 360px, 92vw" loading="lazy" /></div>
+          <h3>{it.title}</h3>
+          <p>{it.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="strip" role="region" aria-label="Photos of Elevate Point in Brooklyn" tabindex="0">
+    <ul role="list">
+      {F.gallery.map((g: any) => (
+        <li><Image src={asset(g.file)} alt={g.alt} widths={[400, 640]} sizes="(min-width: 768px) 380px, 75vw" loading="lazy" /></li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .feats { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 40px; }
+  @media (min-width: 900px) { .feats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; } }
+  /* Arched top like the tall windows of the building */
+  .feat-img { overflow: hidden; aspect-ratio: 4 / 5; border-radius: 999px 999px var(--radius) var(--radius); background: var(--sage); }
+  .feat-img :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .feat h3 { margin-top: 22px; font-size: 22px; }
+  .feat p { margin-top: 8px; color: var(--muted); }
+  .strip { margin-top: 64px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-inline: max(16px, calc((100vw - 1200px) / 2)); }
+  .strip:focus-visible { outline-offset: -3px; }
+  .strip ul { list-style: none; margin: 0; padding: 0 0 12px; display: flex; gap: 14px; width: max-content; }
+  .strip li { scroll-snap-align: start; width: min(75vw, 380px); aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; }
+  .strip :global(img) { width: 100%; height: 100%; object-fit: cover; }
+</style>

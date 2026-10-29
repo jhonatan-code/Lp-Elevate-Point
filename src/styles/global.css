@@ -1,0 +1,109 @@
+/* Elevate Point LP, new design "Brooklyn greenhouse" (2026-10-29). Tokens come from elevatepoint.org's Elementor kit:
+   forest #1f4941 (primary), olive #839928 and #63741c, sage #e4e8d4, lime #baf49c / #c4f6ab, text #3b3b3b. Manrope
+   (display, the site's heading face) + Inter (body). Motif: the round moss panels hung from the ceilings of the
+   Brooklyn rooms, drawn as soft discs behind photos and as the dot marker under headings. */
+:root {
+  --forest: #1f4941;
+  --forest-deep: #143530;
+  --forest-ink: #0e2622;
+  --olive: #839928;
+  --olive-dark: #5f7016;
+  --olive-text: #56661a;
+  --lime: #baf49c;
+  --lime-hover: #c9f8b0;
+  --sage: #e4e8d4;
+  --sage-soft: #f1f4e8;
+  --mist: #f8f9f4;
+  --ink: #1c2321;
+  --muted: #4a524f;
+  --line: #d9dfca;
+  --header-h: 68px;
+  --display: 'Manrope Variable', 'Manrope Fallback', Arial, sans-serif;
+  --font: 'Inter Variable', 'Inter Fallback', Arial, sans-serif;
+  --radius: 22px;
+  --radius-lg: 36px;
+  --shadow-card: 0 1px 2px rgb(14 38 34 / .06);
+  --shadow-lift: 0 22px 48px rgb(31 73 65 / .16);
+}
+@media (min-width: 1024px) { :root { --header-h: 80px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+/* scroll-padding-bottom keeps focused fields clear of the fixed accessibility button */
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 12px); scroll-padding-bottom: 80px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; font-family: var(--font); font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--mist); -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 800; line-height: 1.08; letter-spacing: -.025em; color: var(--forest); text-wrap: balance; }
+h3 { font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+p, li, dd, label, summary { text-wrap: pretty; }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; }
+
+.container { width: min(100% - 32px, 1200px); margin-inline: auto; }
+@media (min-width: 768px) { .container { width: min(100% - 64px, 1200px); } }
+.narrow { width: min(100% - 32px, 920px); }
+
+.section { padding-block: 72px; }
+@media (min-width: 1024px) { .section { padding-block: 112px; } }
+.sage { background: var(--sage-soft); }
+.white { background: #fff; }
+.dark { background: var(--forest); color: #fff; }
+.dark h1, .dark h2, .dark h3 { color: #fff; }
+.h2 { font-size: clamp(30px, 4vw, 50px); }
+/* The lead always sits under its heading (never beside it) */
+.lead { margin-top: 18px; max-width: 720px; font-size: clamp(17px, 1.4vw, 19px); color: var(--muted); }
+.dark .lead { color: rgb(255 255 255 / .86); }
+.center { text-align: center; }
+.center .lead { margin-inline: auto; }
+/* Moss discs under section headings: the round ceiling panels of the Brooklyn rooms, three sizes */
+.discs { display: flex; align-items: center; gap: 6px; margin-top: 22px; }
+.discs i { width: 14px; height: 14px; border-radius: 50%; background: var(--olive); }
+.discs i:nth-child(2) { width: 10px; height: 10px; background: var(--forest); }
+.discs i:nth-child(3) { width: 7px; height: 7px; background: var(--lime); box-shadow: inset 0 0 0 1.5px var(--olive); }
+.dark .discs i:nth-child(2) { background: #fff; }
+.center .discs { justify-content: center; }
+
+/* Every button is 45px tall (all-projects rule) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 45px; padding: 0 24px; white-space: nowrap; border: 2px solid transparent; border-radius: 999px;
+  font-weight: 700; font-size: 16px; line-height: 1.2; text-decoration: none; text-align: center; cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-lime { background: var(--lime); color: var(--forest-ink); }
+.btn-lime:hover { background: var(--lime-hover); }
+.btn-forest { background: var(--forest); color: #fff; }
+.btn-forest:hover { background: var(--forest-deep); }
+.btn-olive { background: var(--olive-dark); color: #fff; }
+.btn-olive:hover { background: var(--olive-text); }
+.btn-ghost { border-color: currentColor; color: var(--forest); background: transparent; }
+.dark .btn-ghost, .on-dark .btn-ghost { color: #fff; }
+.btn-block { width: 100%; }
+.btn-lg { padding-inline: 28px; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.cta-row { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
+.center .cta-row { justify-content: center; }
+
+.text-link { color: var(--forest); font-weight: 700; text-underline-offset: 3px; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 14px; border-radius: 8px; background: #fff; color: var(--forest); font-weight: 700; }
+.skip:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--olive-dark); outline-offset: 2px; }
+.dark :focus-visible, .on-dark :focus-visible { outline-color: var(--lime); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Card hover: top sweep + icon tilt (good-ideas library). On touch screens .is-active (set by CardActivate.astro as the
+   card crosses the middle of the screen) gets the same look. */
+.lift { position: relative; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.lift::before { content: ''; position: absolute; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, var(--forest), var(--olive), var(--lime));
+  transform: scaleX(0); transform-origin: left; transition: transform .4s ease; }
+.lift .tile { transition: transform .35s, background .35s, color .35s; }
+@media (hover: hover) {
+  .lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+  .lift:hover::before { transform: scaleX(1); }
+  .lift:hover .tile { transform: rotate(-8deg) scale(1.06); background: var(--forest); color: var(--lime); }
+}
+.lift.is-active { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.lift.is-active::before { transform: scaleX(1); }
+.lift.is-active .tile { transform: rotate(-8deg) scale(1.06); background: var(--forest); color: var(--lime); }
+.tile { display: grid; place-items: center; width: 60px; height: 60px; flex: none; border-radius: 50%; background: var(--sage); color: var(--forest);
+  font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: -.02em; }
+.tile svg { width: 26px; height: 26px; }
+@media (prefers-reduced-motion: reduce) { .lift, .lift::before, .lift .tile { transition: none; } }

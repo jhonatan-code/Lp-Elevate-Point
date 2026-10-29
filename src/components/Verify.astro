@@ -1,0 +1,37 @@
+---
+// "We Work with Most Major Insurance Plans": the live LP's verification copy beside a terrace photo, with the call
+// button. The live page's long verification form is served by the hero form here.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { asset } from '../lib/assets';
+import { PHONE } from '../data/site.js';
+interface Props { c: any }
+const { VERIFY: V } = Astro.props.c;
+---
+<section class="section sage" aria-labelledby="ver-title">
+  <div class="container ver">
+    <div class="ver-photo">
+      <Image src={asset('dsc06365.webp')} alt="Elevate Point reception desk with the logo on a wood wall" widths={[480, 800, 1000]} sizes="(min-width: 1024px) 520px, 92vw" loading="lazy" />
+      <span class="ver-disc" aria-hidden="true"></span>
+    </div>
+    <div>
+      <h2 id="ver-title" class="h2">{V.title}</h2>
+      <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+      {V.text.map((t: string) => <p class="lead">{t}</p>)}
+      <div class="cta-row">
+        <a href={PHONE.href} class="btn btn-forest btn-lg" data-cta="verify-call"><Icon name="phone" /> {V.cta} {PHONE.display}</a>
+        <a href="#benefits-hero" class="btn btn-ghost btn-lg" data-cta="verify-form">Verify Benefits</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ver { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 1024px) { .ver { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); gap: 72px; } }
+  .ver .lead + .lead { margin-top: 12px; }
+  .ver-photo { position: relative; }
+  .ver-photo :global(img) { width: 100%; aspect-ratio: 5 / 6; object-fit: cover; border-radius: var(--radius-lg); }
+  .ver-disc { position: absolute; right: -18px; bottom: -18px; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #9fb53a, var(--olive) 55%, #5f7016); box-shadow: 0 0 0 10px var(--sage-soft); }
+  @media (max-width: 640px) { .ver-disc { right: 8px; width: 80px; height: 80px; } }
+</style>

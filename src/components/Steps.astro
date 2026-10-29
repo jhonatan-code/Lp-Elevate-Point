@@ -1,0 +1,40 @@
+---
+// /v1/ only: the admission steps, drawn on a line of moss discs (a real sequence, so the numbers carry meaning).
+import Icon from './Icon.astro';
+import { PHONE } from '../data/site.js';
+interface Props { c: any }
+const { STEPS: S } = Astro.props.c;
+---
+<section class="section sage" aria-labelledby="steps-title">
+  <div class="container">
+    <h2 id="steps-title" class="h2 center">{S.title}</h2>
+    <div class="discs steps-discs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <ol class="steps">
+      {S.items.map((s: any, i: number) => (
+        <li class="lift step">
+          <span class="tile" aria-hidden="true">{i + 1}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+    <div class="cta-row steps-cta">
+      <a href={PHONE.href} class="btn btn-forest btn-lg" data-cta="steps-call"><Icon name="phone" /> Call {PHONE.display}</a>
+      <a href="#benefits-hero" class="btn btn-ghost btn-lg" data-cta="steps-form">Send the Form</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .steps { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 18px; position: relative; }
+  @media (min-width: 900px) {
+    .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+    .steps::before { content: ''; position: absolute; top: 60px; left: 12%; right: 12%; height: 2px; background: repeating-linear-gradient(90deg, var(--olive) 0 8px, transparent 8px 16px); }
+  }
+  .step { padding: 30px 26px; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-card); }
+  .step .tile { position: relative; background: var(--forest); color: var(--lime); font-size: 22px; }
+  .step h3 { margin-top: 20px; font-size: 20px; }
+  .step p { margin-top: 8px; color: var(--muted); font-size: 16px; }
+  .steps-cta { justify-content: center; }
+  .steps-discs { justify-content: center; }
+</style>

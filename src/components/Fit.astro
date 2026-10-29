@@ -1,0 +1,46 @@
+---
+// /v1/ only: who the program fits and when admissions refers out (detox, inpatient, Medicaid/Medicare). It answers
+// the calls that cannot convert before they are made.
+import Icon from './Icon.astro';
+import { PHONE } from '../data/site.js';
+interface Props { c: any }
+const { FIT: F } = Astro.props.c;
+---
+<section class="section sage" aria-labelledby="fit-title">
+  <div class="container">
+    <h2 id="fit-title" class="h2">{F.title}</h2>
+    <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="lead">{F.text}</p>
+    <div class="fit">
+      <div class="fit-col yes">
+        <h3>{F.yes.title}</h3>
+        <ul role="list">{F.yes.items.map((t: string) => <li><Icon name="check" />{t}</li>)}</ul>
+        <a href="#benefits-hero" class="btn btn-forest" data-cta="fit-verify">Check My Coverage</a>
+      </div>
+      <div class="fit-col refer">
+        <h3>{F.refer.title}</h3>
+        <ul role="list">{F.refer.items.map((t: string) => <li><Icon name="arrow" />{t}</li>)}</ul>
+        <p>Not sure which applies? <a href={PHONE.href} class="text-link" data-cta="fit-call">Call {PHONE.display}</a> and admissions will tell you on the first call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fit { display: grid; gap: 18px; margin-top: 44px; }
+  @media (min-width: 900px) { .fit { grid-template-columns: 1.15fr 1fr; gap: 22px; } }
+  .fit-col { padding: 32px 30px; border-radius: var(--radius-lg); }
+  .yes { background: var(--forest); color: #fff; }
+  .yes h3 { color: var(--lime); }
+  .refer { background: #fff; box-shadow: var(--shadow-card); }
+  .fit-col h3 { font-size: 22px; }
+  .fit-col ul { list-style: none; margin: 18px 0 26px; padding: 0; display: grid; gap: 12px; }
+  .fit-col li { display: flex; gap: 12px; align-items: flex-start; }
+  .fit-col li :global(svg) { width: 20px; height: 20px; flex: none; margin-top: 3px; }
+  .yes li :global(svg) { color: var(--lime); }
+  .refer li :global(svg) { color: var(--olive-dark); }
+  .refer p { color: var(--muted); }
+  .yes :focus-visible { outline-color: var(--lime); }
+  .yes .btn-forest { background: var(--lime); color: var(--forest-ink); }
+  .yes .btn-forest:hover { background: var(--lime-hover); }
+</style>

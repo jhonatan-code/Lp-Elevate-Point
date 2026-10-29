@@ -1,0 +1,43 @@
+---
+// The whole LP, fed by one content object: `/` passes the live page's copy (data/content.js); `/v1/` will pass the
+// call-based version, which adds FIT, TEAM and STEPS. Page end is FAQ → (mobile-only form) → final CTA → footer (all-projects rule); the CTA and the
+// footer share one photo background (Closing.astro).
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Programs from './Programs.astro';
+import Insurance from './Insurance.astro';
+import Services from './Services.astro';
+import Band from './Band.astro';
+import Treat from './Treat.astro';
+import Facility from './Facility.astro';
+import Reviews from './Reviews.astro';
+import Verify from './Verify.astro';
+import Fit from './Fit.astro';
+import Team from './Team.astro';
+import Steps from './Steps.astro';
+import Faq from './Faq.astro';
+import MobileForm from './MobileForm.astro';
+import Closing from './Closing.astro';
+import CardActivate from './CardActivate.astro';
+interface Props { c: any }
+const { c } = Astro.props;
+---
+<Header />
+<main id="main">
+  <Hero c={c} />
+  <Programs c={c} />
+  <Insurance c={c} />
+  <Services c={c} />
+  {c.FIT && <Fit c={c} />}
+  <Band c={c} />
+  <Treat c={c} />
+  {c.TEAM && <Team c={c} />}
+  {c.STEPS && <Steps c={c} />}
+  <Facility c={c} />
+  <Reviews c={c} />
+  <Verify c={c} />
+  <Faq c={c} />
+  <MobileForm />
+</main>
+<Closing c={c} />
+<CardActivate />

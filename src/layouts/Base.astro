@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+import { GTM_ID, ORG } from '../data/site.js';
+import CookieConsent from '../components/CookieConsent.astro';
+import A11yWidget from '../components/A11yWidget.astro';
+import Reveal from '../components/Reveal.astro';
+// Manrope (display, the main site's heading face) and Inter (body), self hosted from @fontsource (no Google Fonts
+// request before consent). `?url` gives the hashed build URL so the preload and the @font-face point at one file.
+import manrope from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
+import inter from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Extra head content, e.g. the LCP image preload. */
+  bodyClass?: string;
+}
+const { title, description, bodyClass } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Share image (all-projects og rule) from the host that serves this build: until the lp. DNS points at Vercel,
+// Astro.site still serves the old WordPress LP, where /og-image.jpg 404s. After the cutover, Astro.site is right.
+const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+const ogImage = new URL('/og-image.jpg', vercelHost ? `https://${vercelHost}` : Astro.site).href;
+const ctmAccount = (import.meta.env.CTM_ACCOUNT_ID || '').replace(/\D/g, '');
+
+const range = 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD';
+const fontFaces = [
+  `@font-face{font-family:'Manrope Variable';font-style:normal;font-weight:200 800;font-display:swap;src:url(${manrope}) format('woff2-variations');unicode-range:${range}}`,
+  `@font-face{font-family:'Inter Variable';font-style:normal;font-weight:100 900;font-display:swap;src:url(${inter}) format('woff2-variations');unicode-range:${range}}`,
+  // Local fonts sized to the web fonts' metrics, so the swap barely shifts the layout
+  "@font-face{font-family:'Manrope Fallback';src:local('Arial'),local('ArialMT');size-adjust:104%;ascent-override:102%;descent-override:29%;line-gap-override:0%}",
+  "@font-face{font-family:'Inter Fallback';src:local('Arial'),local('ArialMT');size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}",
+].join('');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+
+    {/* ⚠️ NOINDEX IS DELIBERATE. A paid-traffic landing page must not compete
+        with elevatepoint.org in organic results. vercel.json also
+        sends X-Robots-Tag so preview URLs stay out of the index. AdsBot
+        still crawls it for quality review (no robots.txt Disallow). */}
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#1f4941" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta property="og:site_name" content={ORG.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Sunlit lounge with plants and floor-to-ceiling windows at Elevate Point in Brooklyn" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Sunlit lounge with plants and floor-to-ceiling windows at Elevate Point in Brooklyn" />
+    {/* Favicon set from the main site's lotus mark (elevatepoint.org): ico for old browsers, 32px tab icon, 180px for iOS home screens */}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon.png" sizes="180x180" />
+
+    {/* The H1 uses Manrope above the fold */}
+    <link rel="preload" href={manrope} as="font" type="font/woff2" crossorigin />
+    <style is:inline set:html={fontFaces}></style>
+    <slot name="head" />
+
+    {/* Consent Mode v2 defaults (denied) run before the GTM loader below */}
+    <CookieConsent part="head" prefix="elevatepoint" cookieDomain=".elevatepoint.org" />
+
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    {ctmAccount && <link rel="dns-prefetch" href={`https://${ctmAccount}.tctm.co`} />}
+
+    {/* ── Google Tag Manager, loaded on first interaction ─────────────────
+        elev8.io standard loader: the stock snippet costs
+        ~700ms of blocking time on mobile. The container loads on the first
+        pointer, touch, key or scroll, with a 5 second backstop after load.
+        Trade-off: a visitor whose very first action is tapping Call dials
+        before GTM lands. The call still reaches the CTM number on the page.
+        ⚠️ Do not add a second tag that loads GA4, Ads or CTM directly: they
+        fire inside the container and a second copy double counts. */}
+    {GTM_ID && <script is:inline define:vars={{ CONTAINER: GTM_ID }}>
+      (function (w, d) {
+        var WAKE = ['pointermove', 'pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'];
+        var LISTEN = { once: true, passive: true, capture: true };
+        var started = false, timer;
+        w.dataLayer = w.dataLayer || [];
+        function start() {
+          if (started) return;
+          started = true;
+          clearTimeout(timer);
+          WAKE.forEach(function (t) { w.removeEventListener(t, start, LISTEN); });
+          w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var s = d.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=' + CONTAINER;
+          d.head.appendChild(s);
+        }
+        WAKE.forEach(function (t) { w.addEventListener(t, start, LISTEN); });
+        w.addEventListener('load', function () { timer = setTimeout(start, 5000); }, { once: true });
+      })(window, document);
+    </script>}
+  </head>
+  <body class={bodyClass}>
+    {GTM_ID && <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>}
+    <a href="#main" class="skip">Skip to content</a>
+    <slot />
+    <A11yWidget />
+    <Reveal />
+    {/* elev8.io consent standard; elevatepoint_consent is shared across .elevatepoint.org */}
+    <CookieConsent prefix="elevatepoint" privacyHref="" primary="#1f4941" primaryDark="#143530" text="#143530" tint="#f1f4e8" titleFont="'Manrope Variable', Arial, sans-serif" cookieDomain=".elevatepoint.org" functionalText="Loads embedded content such as maps or videos, which may set their own cookies." />
+  </body>
+</html>

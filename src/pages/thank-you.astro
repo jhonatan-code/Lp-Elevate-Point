@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { PHONE } from '../data/site.js';
+// api/lead.js (or the form script) sends visitors here three ways:
+//   ?sent=1     CTM accepted the lead: push dataLayer lead_accepted (the conversion)
+//   ?issue=...  the lead did not go through: lead with the phone number
+//   bare        discarded as spam: the ordinary page, no conversion
+---
+<Base title="Thank you | Elevate Point" description="Elevate Point admissions will call you back shortly.">
+  <Header />
+  <main id="main" class="ty section">
+    <div class="container narrow center">
+      <div data-state="failed" hidden>
+        <h1 class="h2">Please call Elevate Point admissions</h1>
+        <p class="lead">Your details did not go through. Call now and admissions will help you right away.</p>
+        <div class="cta-row"><a href={PHONE.href} class="btn btn-forest btn-lg" data-cta="thankyou-recover"><Icon name="phone" /> Call {PHONE.display}</a></div>
+      </div>
+      <div data-state="ok">
+        <h1 class="h2">We have your details. Admissions will call you shortly.</h1>
+        <p class="lead">A member of our admissions team will reach out to talk through what is going on and check your benefits. The call is confidential.</p>
+        <p class="lead">If you would rather not wait, call <a href={PHONE.href} class="text-link" data-cta="thankyou-call">{PHONE.display}</a>.</p>
+      </div>
+      <p class="back"><a href="/" class="text-link">Back to the main page</a></p>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .ty { min-height: 60vh; }
+  .back { margin-top: 32px; }
+</style>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.has('issue')) {
+    document.querySelector<HTMLElement>('[data-state="failed"]')!.hidden = false;
+    document.querySelector<HTMLElement>('[data-state="ok"]')!.hidden = true;
+  }
+  // The only conversion: CTM accepted the lead. Once per visit, so a reload does not count twice.
+  if (q.get('sent') === '1') {
+    try {
+      if (!sessionStorage.getItem('elevatepoint_lead_accepted')) {
+        sessionStorage.setItem('elevatepoint_lead_accepted', '1');
+        const w = window as unknown as { dataLayer?: unknown[] };
+        (w.dataLayer = w.dataLayer || []).push({ event: 'lead_accepted' });
+      }
+    } catch {
+      /* storage blocked: skip the push rather than risk double counting */
+    }
+  }
+</script>
