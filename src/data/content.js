@@ -22,7 +22,7 @@ export default {
     photo: 'dsc06274.webp',
     photoAlt: 'Sunlit lounge with plants and floor-to-ceiling windows at Elevate Point in Brooklyn',
     stats: [
-      { value: '30+', label: 'Combined Years Experience' },
+      { value: '30+', label: 'Combined Years of Experience' },
       { value: '24', label: 'Five-Star Google Reviews' },
       { value: '3', label: 'Levels of Care: PHP, IOP & OP' },
     ],
