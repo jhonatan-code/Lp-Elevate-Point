@@ -115,7 +115,7 @@ export default {
 
   TREAT: {
     kicker: 'What We Treat',
-    title: 'What We Treat at Elevate Point Brooklyn',
+    title: 'What We Treat',
     text: 'At Elevate Point in Brooklyn, we designed our addiction treatment programs in NYC to be rooted in a client-first approach that utilizes dual-diagnosis approaches that treat the mind, body, and spirit.',
     cta: 'Get Started',
     // Each card names what it treats instead of repeating one feature list (María's review). Conditions and services
@@ -156,7 +156,7 @@ export default {
   // src/assets/reviews. The live LP's widget showed six others (two of them are no longer on the listing).
   REVIEWS: {
     kicker: 'TESTIMONIALS',
-    title: 'What Our Clients Say About Elevate Point in Brooklyn',
+    title: 'What Our Clients Say',
     // Shown on the score panel (María's review). Update it when the listing grows.
     count: 24,
     items: [
@@ -207,7 +207,7 @@ export default {
 
   FAQ: {
     kicker: 'Faqs',
-    title: 'Commonly Asked Questions About Treatment at Elevate Point',
+    title: 'Commonly Asked Questions',
     text: 'Forget what holds you back. Begin today at Elevate Point.',
     // The live LP's four questions plus the topics María asked for (schedule, teens, virtual care, detox, cost). Hours,
     // ages and days come from the program pages on elevatepoint.org; the IOP track times are the examples given there.
