@@ -1,0 +1,47 @@
+---
+// "Why Elevate Point" (María's review): the differentiators in one place, right after the services. Photo of the
+// center on one side, six short points on the other.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { asset } from '../lib/assets';
+interface Props { c: any }
+const { WHY: W } = Astro.props.c;
+---
+<section class="section sage-soft why" aria-labelledby="why-title">
+  <div class="container why-grid">
+    <div class="why-head">
+      <h2 id="why-title" class="h2">{W.title}</h2>
+      <div class="discs" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="lead">{W.text}</p>
+      <div class="why-photo">
+        <Image src={asset('dsc06270.webp')} alt="Bright lounge and dining area with floor-to-ceiling windows at Elevate Point" widths={[480, 800, 1000]} sizes="(min-width: 1024px) 460px, 92vw" loading="lazy" />
+      </div>
+    </div>
+    <ul class="why-list" role="list">
+      {W.items.map((it: any) => (
+        <li class="lift wcard">
+          <span class="tile" aria-hidden="true"><Icon name={it.icon} /></span>
+          <div>
+            <h3>{it.title}</h3>
+            <p>{it.text}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why { background: var(--sage-soft); }
+  .why-grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 1024px) { .why-grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 64px; } }
+  .why-photo { margin-top: 32px; }
+  .why-photo :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 999px 999px var(--radius-lg) var(--radius-lg); }
+  @media (max-width: 1023px) { .why-photo { display: none; } }
+  .why-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  @media (min-width: 640px) { .why-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+  .wcard { display: flex; gap: 16px; align-items: flex-start; padding: 22px; border-radius: var(--radius); background: #fff; box-shadow: var(--shadow-card); }
+  .wcard .tile { flex: none; }
+  .wcard h3 { font-size: 18px; }
+  .wcard p { margin-top: 6px; font-size: 15.5px; color: var(--muted); }
+</style>

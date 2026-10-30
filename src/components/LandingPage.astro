@@ -7,6 +7,7 @@ import Hero from './Hero.astro';
 import Programs from './Programs.astro';
 import Insurance from './Insurance.astro';
 import Services from './Services.astro';
+import Why from './Why.astro';
 import Band from './Band.astro';
 import Treat from './Treat.astro';
 import Facility from './Facility.astro';
@@ -30,6 +31,7 @@ const { c } = Astro.props;
   <Insurance c={c} />
   <Services c={c} />
   {c.FIT && <Fit c={c} />}
+  <Why c={c} />
   <Band c={c} />
   <Treat c={c} />
   {c.TEAM && <Team c={c} />}
