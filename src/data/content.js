@@ -9,8 +9,6 @@ export const FORM = {
   note: 'Free, confidential verification of benefits.',
 };
 
-const FEATURES = ['PHP, IOP & OP Programs', 'Day & Evening Schedules', 'In-Person & Virtual Care', 'Individual, Group & Family Therapy'];
-
 export default {
   // H1 matches the ads (María's review, 2026-10-30). Stats are all sourced: years from the live LP, the review count
   // from the Google listing (read 2026-10-29), the three levels from the program pages. The live LP's
@@ -112,10 +110,12 @@ export default {
     title: 'What We Treat at Elevate Point Brooklyn',
     text: 'At Elevate Point in Brooklyn, we designed our addiction treatment programs in NYC to be rooted in a client-first approach that utilizes dual-diagnosis approaches that treat the mind, body, and spirit.',
     cta: 'Get Started',
+    // Each card names what it treats instead of repeating one feature list (María's review). Conditions and services
+    // are the ones with their own pages on elevatepoint.org.
     items: [
-      { title: 'Substance Abuse', text: 'Our substance abuse treatment programs in NYC provide a solid foundation for lifelong recovery.', label: 'Program Features:', features: ['Detoxification Referrals', ...FEATURES] },
-      { title: 'Alcohol Abuse', text: 'When looking for an alcohol rehab in Brooklyn, Elevate Point is your best choice for long-term sobriety solutions.', label: 'Features:', features: ['Detoxification Referrals', ...FEATURES] },
-      { title: 'Dual-Diagnosis', text: 'When addiction co-occurs with mental health conditions you need effective dual-diagnosis treatment in NYC.', label: 'Features:', features: ['Inpatient Referrals', ...FEATURES] },
+      { title: 'Substance Use', text: 'Alcohol, opioids and fentanyl, cocaine, benzodiazepines such as Xanax, cannabis, meth, kratom and prescription drugs.', label: 'Includes:', features: ['Detox referrals when needed', 'PHP, IOP & OP', 'Medication-assisted treatment', 'Individual, group & family therapy'] },
+      { title: 'Mental Health', text: 'Depression, anxiety and panic, trauma and PTSD, bipolar disorder, OCD, ADHD, burnout and grief.', label: 'Includes:', features: ['Psychiatric evaluations', 'Medication management', 'CBT and DBT skills groups', 'Art therapy, yoga & mindfulness'] },
+      { title: 'Dual Diagnosis', text: 'When addiction and a mental health condition feed each other, we treat both together in one plan.', label: 'Includes:', features: ['One integrated treatment plan', 'Inpatient referrals when needed', 'Day & evening schedules', 'In-person & virtual care'] },
     ],
   },
 
