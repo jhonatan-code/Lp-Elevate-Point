@@ -208,10 +208,17 @@ export default {
     kicker: 'Faqs',
     title: 'Commonly Asked Questions About Treatment at Elevate Point',
     text: 'Forget what holds you back. Begin today at Elevate Point.',
+    // The live LP's four questions plus the topics María asked for (schedule, teens, virtual care, detox, cost). Hours,
+    // ages and days come from the program pages on elevatepoint.org; the IOP track times are the examples given there.
     // The first answer's "click the contact button" points at the form on this page; the number follows PHONE.
     items: [
       { q: 'How do I enroll in a program at Elevate Point?', a: 'Enrolling in an Elevate Point treatment program is easy. If you’re looking for a trusted drug rehab in Brooklyn, NY or mental health treatment, just click the contact button or call {phone} and a member of our team will help you determine the best program for your needs or the needs of your teen.' },
-      { q: 'How long do the programs at Elevate Point last?', a: 'The length of each program will vary based on your unique needs. Our outpatient and intensive outpatient programs offer flexible scheduling, while our partial hospitalization program provides structured support.' },
+      { q: 'How long do the programs at Elevate Point last?', a: 'Most people start in PHP or IOP and step down to outpatient as they progress. PHP meets 5–6 days a week; IOP meets 3–5 days a week for 3–5 hours a day. How long you stay at each level depends on your progress, and your clinical team reviews it with you as you go.' },
+      { q: 'Do you offer evening hours?', a: 'Yes. IOP runs in morning, afternoon and evening tracks, for example 9:00 AM–12:30 PM, 1:00–4:30 PM or 5:30–8:30 PM, so you can keep working or studying. PHP meets during the day and you go home each evening.' },
+      { q: 'Do you treat teens?', a: 'Yes. Our adolescent IOP and outpatient programs are for ages 13–17. Teen IOP is 3–5 sessions a week, 9–12 hours in total, after school or in the evening, and families take part through family therapy.' },
+      { q: 'Can I attend virtually?', a: 'Yes. We offer both in-person and virtual care, so you can join sessions from home when you need to.' },
+      { q: 'Do you offer detox?', a: 'We are an outpatient program and do not provide detox on site. If you need medical detox or inpatient care first, we refer you, and you can continue with us afterward.' },
+      { q: 'How much does treatment cost?', a: 'It depends on your plan and your level of care. We work with PPO and POS plans that have out-of-network benefits, and admissions verifies yours for free, including deductibles, co-pays and preauthorization, before you start. Self-pay is also available.' },
       { q: 'Is my participation in the program confidential?', a: 'Yes. Your privacy is our priority. We follow strict confidentiality standards and your information and treatment details are well-protected.' },
       { q: 'Do you accept insurance for treatment at Elevate Point?', a: 'Yes. We work with most major commercial insurance carriers that offer out-of-network coverage for substance abuse & mental health treatment.' },
     ],
