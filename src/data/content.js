@@ -17,7 +17,7 @@ export default {
   HERO: {
     h1: 'Outpatient Addiction Treatment in Brooklyn',
     h2: 'Discover an Oasis of Healing & Recovery.',
-    text: 'Our state-of-the-art addiction treatment center in Brooklyn is designed for the flexible needs of New York City residents. We are proud to offer one of the most advanced PHP, IOP, and outpatient programs in NYC.',
+    text: 'Our state-of-the-art addiction treatment center in Brooklyn is designed for the flexible needs of New York City residents. We are proud to offer PHP, IOP, and outpatient programs in NYC.',
     cta: 'Verify Insurance',
     photo: 'dsc06274.webp',
     photoAlt: 'Sunlit lounge with plants and floor-to-ceiling windows at Elevate Point in Brooklyn',
