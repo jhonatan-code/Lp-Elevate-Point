@@ -7,7 +7,11 @@ import LeadForm from './LeadForm.astro';
 import { asset } from '../lib/assets';
 import { PHONE } from '../data/site.js';
 import oasas from '../assets/brand/oasas.webp';
-import hipaa from '../assets/brand/hipaa-white.svg';
+// The LegitScript seal of elevatepoint.org (static.legitscript.com/seals/47508035.png). Shown without its verification
+// link: an Ads LP has no outbound links.
+import legitscript from '../assets/brand/legitscript.png';
+// NAATP member (naatp.org directory listing 35786), the white version of the association's logo
+import naatp from '../assets/brand/naatp-white.webp';
 interface Props { c: any }
 const { HERO } = Astro.props.c;
 ---
@@ -31,9 +35,10 @@ const { HERO } = Astro.props.c;
       </dl>
       {HERO.trust && (
         <ul class="trust" role="list">
+          <li class="trust-stars"><span aria-hidden="true">★★★★★</span> 5.0 on Google</li>
           <li class="trust-oasas"><Image src={oasas} alt="New York State Office of Addiction Services and Supports" width={160} /></li>
-          <li><img src={hipaa.src} width="80" height="40" alt="HIPAA compliant" /></li>
-          <li class="trust-stars"><span aria-hidden="true">★★★★★</span> 5-star reviews on Google</li>
+          <li class="trust-legit"><Image src={legitscript} alt="LegitScript certified" width={44} densities={[1, 2]} /></li>
+          <li class="trust-naatp"><Image src={naatp} alt="NAATP, National Association of Addiction Treatment Providers member" width={150} densities={[1, 2]} /></li>
         </ul>
       )}
     </div>
@@ -65,7 +70,8 @@ const { HERO } = Astro.props.c;
   .trust { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
   .trust-oasas { display: inline-flex; padding: 6px 12px; border-radius: 10px; background: #fff; }
   .trust-oasas :global(img) { width: 130px; height: auto; }
-  .trust img[alt='HIPAA compliant'] { height: 36px; width: auto; }
+  .trust-legit :global(img) { width: 44px; height: auto; display: block; }
+  .trust-naatp :global(img) { width: 150px; height: auto; display: block; }
   .trust-stars { font-weight: 700; font-size: 15px; color: #fff; }
   .trust-stars span { color: #f2c94c; letter-spacing: 1px; }
   .hero-form { display: flex; justify-content: center; }

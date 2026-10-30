@@ -12,19 +12,22 @@ export const FORM = {
 const FEATURES = ['PHP, IOP & OP Programs', 'Day & Evening Schedules', 'In-Person & Virtual Care', 'Individual, Group & Family Therapy'];
 
 export default {
+  // H1 matches the ads (María's review, 2026-10-30). Stats are all sourced: years from the live LP, the review count
+  // from the Google listing (read 2026-10-29), the three levels from the program pages. The live LP's
+  // "100% Client Satisfaction" (no source, Ads policy risk) and "8+ Subway Lines" are gone.
   HERO: {
-    h1: 'Premiere Addiction Treatment Designed for You',
+    h1: 'Outpatient Addiction Treatment in Brooklyn',
     h2: 'Discover an Oasis of Healing & Recovery.',
     text: 'Our state-of-the-art addiction treatment center in Brooklyn is designed for the flexible needs of New York City residents. We are proud to offer one of the most advanced PHP, IOP, and outpatient programs in NYC.',
-    cta: 'Get Help Now',
+    cta: 'Verify Insurance',
     photo: 'dsc06274.webp',
     photoAlt: 'Sunlit lounge with plants and floor-to-ceiling windows at Elevate Point in Brooklyn',
-    // ⚠️ Kept verbatim from the live LP. "100% Client Satisfaction" has no source on the site.
     stats: [
       { value: '30+', label: 'Combined Years Experience' },
-      { value: '8+', label: 'Subway Lines Near Us' },
-      { value: '100%', label: 'Client Satisfaction' },
+      { value: '24', label: 'Five-Star Google Reviews' },
+      { value: '3', label: 'Levels of Care: PHP, IOP & OP' },
     ],
+    trust: true,
   },
 
   PROGRAMS: {
