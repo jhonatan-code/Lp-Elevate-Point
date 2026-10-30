@@ -44,8 +44,15 @@ export default {
   INSURANCE: {
     kicker: 'Paying for Treatment',
     title: 'We Accept Most Major Insurance Plans',
-    text: 'Elevate Point in Brooklyn is proud to work with most major PPO & POS insurance plans that offer out-of-network coverage. To find out your personal options for treatment, contact our caring admissions coordinators to request a free verification of benefits.',
+    // The live LP's two insurance blocks, merged into one (María's review): this intro, plus the verification copy
+    text: [
+      'Elevate Point in Brooklyn is proud to work with most major PPO & POS insurance plans that offer out-of-network coverage. To find out your personal options for treatment, contact our caring admissions coordinators to request a free verification of benefits.',
+      'Our admissions team provides complimentary insurance verification and will walk you through your specific PPO coverage, including deductibles, co-pays, and any preauthorization requirements.',
+    ],
+    // Under the logos, so they don't read as in-network
+    note: 'Elevate Point is an out-of-network provider. We work with PPO and POS plans from these carriers that include out-of-network benefits.',
     cta: 'Verify Insurance',
+    callCta: 'Call to Verify',
     // Carrier logos in their brand colors where an official color version was at hand (2026-10-29); Empire, Horizon,
     // NYSHIP and GEHA are still the live LP's black files (no color version reachable yet). `w` sets a logo's width by
     // eye where its file's padding or shape makes it look too big or too small (user, 2026-10-29).
@@ -157,17 +164,6 @@ export default {
       { name: 'Dhanya Unnikrishnan', when: '7 months ago', photo: 'dhanya-unnikrishnan.png', text: 'What makes Elevate Point different is their holistic approach. It’s not just therapy , it’s everything from mindfulness to real-life coping skills. They treat you like a whole person, not just a diagnosis.' },
       { name: 'PAWANDEV MAHATO', when: '7 months ago', photo: 'pawandev-mahato.png', text: 'From the moment I walked into Elevate Point, I felt welcomed and understood. The environment is beautiful and calming, and the team goes above and beyond to make you feel safe. EP gave me hope again.' },
     ],
-  },
-
-  VERIFY: {
-    kicker: 'Verify Your Benefits Now',
-    title: 'We Work with Most Major Insurance Plans',
-    text: [
-      'Elevate Point is committed to making high-quality addiction and dual diagnosis care as accessible as possible.',
-      'Our program in Brooklyn accepts most major PPO health insurance plans. This allows clients to receive comprehensive treatment—including Partial Hospitalization (PHP), Intensive Outpatient (IOP), and standard outpatient services—while reducing out-of-pocket costs.',
-      'Our admissions team provides complimentary insurance verification and will walk you through your specific PPO coverage, including deductibles, co-pays, and any preauthorization requirements.',
-    ],
-    cta: 'Call to Verify',
   },
 
   // Map section (added 2026-10-29). Stations and lines are the subway stops around 203 Jay Street (A, C, F, R, 2, 3, 4,
