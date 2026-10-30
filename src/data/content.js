@@ -121,7 +121,7 @@ export default {
     // Each card names what it treats instead of repeating one feature list (María's review). Conditions and services
     // are the ones with their own pages on elevatepoint.org.
     items: [
-      { title: 'Substance Use', text: 'Alcohol, opioids and fentanyl, cocaine, benzodiazepines such as Xanax, cannabis, meth, kratom and prescription drugs.', label: 'Includes:', features: ['Detox referrals when needed', 'PHP, IOP & OP', 'Medication-assisted treatment', 'Individual, group & family therapy'] },
+      { title: 'Substance Use', text: 'Alcohol, opioids and fentanyl, cocaine, benzodiazepines, cannabis, meth, kratom and prescription drugs.', label: 'Includes:', features: ['Detox referrals when needed', 'PHP, IOP & OP', 'Medication-assisted treatment', 'Individual, group & family therapy'] },
       { title: 'Mental Health', text: 'Depression, anxiety and panic, trauma and PTSD, bipolar disorder, OCD, ADHD, burnout and grief.', label: 'Includes:', features: ['Psychiatric evaluations', 'Medication management', 'CBT and DBT skills groups', 'Art therapy, yoga & mindfulness'] },
       { title: 'Dual Diagnosis', text: 'When addiction and a mental health condition feed each other, we treat both together in one plan.', label: 'Includes:', features: ['One integrated treatment plan', 'Inpatient referrals when needed', 'Day & evening schedules', 'In-person & virtual care'] },
     ],
