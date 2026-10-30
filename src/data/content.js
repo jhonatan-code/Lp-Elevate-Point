@@ -80,7 +80,7 @@ export default {
     // `schedule` and `therapies` come from the program pages on elevatepoint.org (PHP, IOP, outpatient). The site
     // gives no weekly hours for OP, so its schedule line stays general.
     items: [
-      { abbr: 'PHP', title: 'Partial Hospitalization (PHP)', text: 'For those needing more robust support, our PHP offers daily intensive treatment in a tranquil environment—while still giving you the flexibility to manage personal responsibilities.',
+      { abbr: 'PHP', title: 'Partial Hospitalization (PHP)', text: 'For those needing more robust support, our PHP offers daily intensive treatment in a tranquil environment.',
         schedule: 'Daytime, 5–6 days a week, up to 20 hours of therapy weekly. You go home each evening.',
         therapies: 'Individual, group and family therapy, CBT and DBT skills, medication management' },
       { abbr: 'IOP', title: 'Intensive Outpatient (IOP)', text: 'Elevate Point’s IOP fits around your schedule, allowing you to uphold work, family, or school commitments while engaging in structured, evidence-based care.',
