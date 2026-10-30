@@ -131,12 +131,12 @@ export default {
     kicker: 'modern facilities in Brooklyn',
     title: 'We Elevated Treatment to a Whole New Level',
     text: 'From the moment you arrive at Elevate Point, you’re greeted with a sense of comfort and ease. The doorman lobby creates a welcoming and secure entry, setting the tone for the experience inside. Convenient on-site parking ensures clients and visitors can access the facility effortlessly, making every arrival simple and stress-free.',
-    // Fixed from the live page: "tenants" and "greenary" (typos), "residents" → "clients" (it's outpatient) and the
-    // grammar of "make our neighborhoods one of the best" (María's review)
+    // Fixed from the live page: "tenants" and "greenary" (typos), "residents" → "clients" (it's outpatient), and the
+    // unsupported "one of the best neighborhoods in NYC" cut (María's review)
     items: [
       { title: 'Biophilic Design', text: 'We leveraged Biophilic design tenets and incorporated an abundance of plant life and greenery, creating a deeper connection with nature.', photo: 'dsc06797.webp', alt: 'Outdoor terrace lined with bamboo planters' },
       { title: 'Open Concept', text: 'From floor-to-ceiling windows that flood the interior with natural light, to our open, functional group rooms, we create a warm and uplifting atmosphere at every turn.', photo: 'dsc06325.webp', alt: 'Open group room with green seating under round moss ceiling panels' },
-      { title: 'Central Location', text: 'Step outside and you’ll find a mix of local cafés, green parks, cultural attractions, and everyday conveniences that make this one of the best neighborhoods in NYC.', photo: 'dsc06777.webp', alt: 'Outdoor terrace with planters and tables beside a brick building' },
+      { title: 'Central Location', text: 'Step outside and you’ll find a mix of local cafés, green parks, cultural attractions, and everyday conveniences.', photo: 'dsc06777.webp', alt: 'Outdoor terrace with planters and tables beside a brick building' },
     ],
     // The live LP's photo strip
     gallery: [
