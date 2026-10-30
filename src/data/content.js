@@ -168,6 +168,17 @@ export default {
     ],
   },
 
+  // Meet the Team, after the reviews (María's review): the three program leaders from elevatepoint.org/about-us/
+  TEAM: {
+    title: 'Meet the Clinical Team',
+    text: 'Psychiatric evaluations, medication management and therapy happen under one roof, with a clinical team that works together on your plan.',
+    items: [
+      { name: 'Joseph Nissenfeld, MD', role: 'Medical Director', photo: 'joseph-nissenfeld.webp', bio: 'Psychiatrist with a fellowship in addiction psychiatry at NYU School of Medicine and over a decade at Bellevue Hospital, where he directed outpatient programs.' },
+      { name: 'Rebecca Silverstein, LCSW', role: 'Program Director', photo: 'rebecca-silverstein.jpg', bio: 'Licensed Clinical Social Worker with 13 years of experience treating substance use and co-occurring mental health conditions, using CBT and DBT.' },
+      { name: 'Kristen Stramka, LMHC, CASAC', role: 'Clinical Director', photo: 'kristen-stramka.webp', bio: 'Licensed Mental Health Counselor and Master-level CASAC with over eight years across outpatient and inpatient addiction care.' },
+    ],
+  },
+
   // Map section (added 2026-10-29). Stations and lines are the subway stops around 203 Jay Street (A, C, F, R, 2, 3, 4,
   // 5: the live LP's "8+ subway lines near us"). Parking is from the live LP's facility text.
   LOCATION: {
