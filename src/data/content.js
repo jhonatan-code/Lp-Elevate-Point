@@ -38,7 +38,7 @@ export default {
     items: [
       // Real photos of the center in place of the live LP's 3D renderings (María asked for better images)
       { title: 'Adult Programs', levels: 'PHP, IOP & OP', photo: 'dsc06331.webp', alt: 'Lounge with armchairs, a long table and round moss panels on the ceiling' },
-      { title: 'Teens & Adolescents', levels: 'IOP & OP', photo: 'dsc06555.webp', alt: 'Lounge with yellow and green sofas by floor-to-ceiling windows' },
+      { title: 'Teens (13–17)', levels: 'IOP & OP', photo: 'dsc06555.webp', alt: 'Lounge with yellow and green sofas by floor-to-ceiling windows' },
     ],
   },
 
