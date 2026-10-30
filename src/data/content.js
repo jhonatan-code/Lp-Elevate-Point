@@ -37,8 +37,9 @@ export default {
     quote: '“We focus on personalized recovery through innovative treatment approaches.”',
     quoteBy: '– Elevate Point',
     items: [
-      { title: 'Adult Programs', levels: 'PHP, IOP & OP', photo: 'adult-lounge.webp', alt: 'Adult lounge with green seating and round moss panels on the ceiling' },
-      { title: 'Teens & Adolescents', levels: 'IOP & OP', photo: 'adolescent-lounge.webp', alt: 'Adolescent lounge with soft seating and plants' },
+      // Real photos of the center in place of the live LP's 3D renderings (María asked for better images)
+      { title: 'Adult Programs', levels: 'PHP, IOP & OP', photo: 'dsc06331.webp', alt: 'Lounge with armchairs, a long table and round moss panels on the ceiling' },
+      { title: 'Teens & Adolescents', levels: 'IOP & OP', photo: 'dsc06555.webp', alt: 'Lounge with yellow and green sofas by floor-to-ceiling windows' },
     ],
   },
 
@@ -103,7 +104,7 @@ export default {
     items: [
       { title: 'Biophilic Design', text: 'We leveraged Biophilic design tenets and incorporated an abundance of plant life and greenery, creating a deeper connection with nature.', photo: 'dsc06797.webp', alt: 'Outdoor terrace lined with bamboo planters' },
       { title: 'Open Concept', text: 'From floor-to-ceiling windows that flood the interior with natural light, to our open, functional group rooms, we create a warm and uplifting atmosphere at every turn.', photo: 'dsc06325.webp', alt: 'Open group room with green seating under round moss ceiling panels' },
-      { title: 'Central Location', text: 'Step outside and you’ll find a mix of local cafés, green parks, cultural attractions, and everyday conveniences that make our neighborhoods one of the best in NYC.', photo: 'outdoor-terrace.webp', alt: 'Rooftop terrace with Brooklyn buildings in the background' },
+      { title: 'Central Location', text: 'Step outside and you’ll find a mix of local cafés, green parks, cultural attractions, and everyday conveniences that make our neighborhoods one of the best in NYC.', photo: 'dsc06777.webp', alt: 'Outdoor terrace with planters and tables beside a brick building' },
     ],
     // The live LP's photo strip
     gallery: [
