@@ -71,10 +71,18 @@ export default {
     kicker: 'Treatment Services',
     title: 'Our Addiction Treatment Services in Brooklyn, NYC',
     text: 'At Elevate Point, we believe recovery should be compassionate, personalized, and empowering. As a trusted drug rehab in NYC, we combine evidence-based treatment, expert clinical care, and a welcoming environment to help clients heal and thrive. Our approach is built on understanding each person’s unique story, because lasting recovery starts with truly being seen and supported.',
+    // `schedule` and `therapies` come from the program pages on elevatepoint.org (PHP, IOP, outpatient). The site
+    // gives no weekly hours for OP, so its schedule line stays general.
     items: [
-      { abbr: 'PHP', title: 'Partial Hospitalization (PHP)', text: 'For those needing more robust support, our PHP offers daily intensive treatment in a tranquil environment—while still giving you the flexibility to manage personal responsibilities.' },
-      { abbr: 'IOP', title: 'Intensive Outpatient (IOP)', text: 'Elevate Point’s IOP fits around your schedule, allowing you to uphold work, family, or school commitments while engaging in structured, evidence-based care.' },
-      { abbr: 'OP', title: 'Outpatient Program (OP)', text: 'Our outpatient program in Brooklyn offers you a step-down level of care that allows you to re-adjust to life while slowly continuing outpatient care.' },
+      { abbr: 'PHP', title: 'Partial Hospitalization (PHP)', text: 'For those needing more robust support, our PHP offers daily intensive treatment in a tranquil environment—while still giving you the flexibility to manage personal responsibilities.',
+        schedule: 'Daytime, 5–6 days a week, up to 20 hours of therapy weekly. You go home each evening.',
+        therapies: 'Individual, group and family therapy, CBT and DBT skills, medication management' },
+      { abbr: 'IOP', title: 'Intensive Outpatient (IOP)', text: 'Elevate Point’s IOP fits around your schedule, allowing you to uphold work, family, or school commitments while engaging in structured, evidence-based care.',
+        schedule: '3–5 days a week, 3–5 hours a day, in a morning, afternoon or evening track.',
+        therapies: 'CBT and DBT skills groups, individual, group and family therapy' },
+      { abbr: 'OP', title: 'Outpatient Program (OP)', text: 'Our outpatient program in Brooklyn offers you a step-down level of care that allows you to re-adjust to life while slowly continuing outpatient care.',
+        schedule: 'Fewer sessions each week than IOP, as you step down and settle back into daily life.',
+        therapies: 'Individual and group therapy, CBT and DBT skills, family therapy' },
     ],
   },
 

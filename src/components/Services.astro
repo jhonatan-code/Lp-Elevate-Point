@@ -1,5 +1,7 @@
 ---
-// "Our Addiction Treatment Services": the three levels of care as cards, the abbreviation in a moss disc.
+// "Our Addiction Treatment Services": the three levels of care as cards, the abbreviation in a moss disc, each with its
+// schedule and main therapies.
+import Icon from './Icon.astro';
 interface Props { c: any }
 const { SERVICES: S } = Astro.props.c;
 ---
@@ -14,6 +16,10 @@ const { SERVICES: S } = Astro.props.c;
           <span class="tile" aria-hidden="true">{it.abbr}</span>
           <h3>{it.title}</h3>
           <p>{it.text}</p>
+          <dl class="sdet">
+            <div><dt><Icon name="clock" /> Schedule</dt><dd>{it.schedule}</dd></div>
+            <div><dt><Icon name="brain" /> Therapies</dt><dd>{it.therapies}</dd></div>
+          </dl>
         </li>
       ))}
     </ul>
@@ -25,5 +31,11 @@ const { SERVICES: S } = Astro.props.c;
   @media (min-width: 900px) { .svc { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; } }
   .scard { padding: 30px 28px 32px; border-radius: var(--radius); background: var(--mist); border: 1px solid var(--line); }
   .scard h3 { margin-top: 22px; font-size: 22px; }
+  .scard { display: flex; flex-direction: column; }
   .scard p { margin-top: 10px; color: var(--muted); }
+  .sdet { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 14px; }
+  @media (min-width: 900px) { .sdet { margin-top: auto; } .scard p { margin-bottom: 22px; } }
+  .sdet dt { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; color: var(--forest); }
+  .sdet dt :global(svg) { width: 17px; height: 17px; color: var(--olive-dark); }
+  .sdet dd { margin: 4px 0 0; font-size: 15.5px; color: var(--ink); }
 </style>
