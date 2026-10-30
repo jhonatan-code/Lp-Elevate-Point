@@ -2,7 +2,8 @@
 // Google reviews, option D "Google panel" (picked 2026-10-29): a sticky score card like Google's business panel beside
 // review cards in Google's style (profile photo, G mark, stars in the yellow of the Google Reviews logo). Reviews come
 // from the Google listing, verbatim, picked at similar lengths; every text box has the same height and a longer review
-// scrolls inside its card. No link to Google (an Ads LP has no outbound links).
+// scrolls inside its card. The panel shows the listing's review count. No link to Google (an Ads LP has no outbound
+// links).
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import { asset } from '../lib/assets';
@@ -21,7 +22,7 @@ const SCROLL_AT = 330;
         <img src={googleReviews.src} width="186" height="66" alt="Google Reviews" class="rv-logo" loading="lazy" />
         <p class="rv-score">5.0</p>
         <p class="rv-stars lg" role="img" aria-label="5 out of 5 stars">{[0, 1, 2, 3, 4].map(() => <Icon name="star" />)}</p>
-        <p class="rv-note">5-star reviews from our clients on Google</p>
+        <p class="rv-note">Based on {R.count} five-star reviews on Google</p>
         <a href="#benefits-hero" class="btn btn-forest btn-block" data-cta="reviews-verify">Verify Benefits</a>
       </div>
       <ul class="rv-cards" role="list">

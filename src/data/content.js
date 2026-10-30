@@ -156,6 +156,8 @@ export default {
   REVIEWS: {
     kicker: 'TESTIMONIALS',
     title: 'What Our Clients Say About Elevate Point in Brooklyn',
+    // Shown on the score panel (María's review). Update it when the listing grows.
+    count: 24,
     items: [
       { name: 'Scott Green', when: '11 months ago', photo: 'scott-green.png', text: 'I’ve referred clients to Elevate Point and have consistently been impressed by the level of care they provide. The team is exceptionally professional, compassionate, and attentive, and the environment is truly first-class. Elevate Point sets a new standard for behavioral health and addiction treatment in Brooklyn.' },
       { name: 'James Walton', when: 'a year ago', photo: 'james-walton.png', text: 'I have been here at elevate since sometime in early spring,beginning in 4 nights per week then to 3. I have enjoyed the program and feel that I’ve gained an awful lot of knowledge and confidence in myself to beat my dependence on alcohol. It has been quite sometime since I’ve had a clear effect it had on myself and my family. I am So glad that Serenity recommended me here everyone has been so supportive and Truly caring, too many to mention! Me and my family are very grateful to have had this Opportunity to get back on the right path to a successful,sober and healthy life!!!! Thank you Elevate !!!' },
