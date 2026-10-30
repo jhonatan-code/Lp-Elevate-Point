@@ -109,7 +109,7 @@ export default {
 
   BAND: {
     title: 'There\'s a Light on the Other Side of Addiction. Follow It.',
-    text: 'Our recovery experts in Brooklyn, NY will help you move into your next stage of life in a spa-like state-of-the-art setting.',
+    text: 'Our Brooklyn team will help you take the next step in recovery while you keep up with work, school, and family.',
     photo: 'dsc06296.webp',
   },
 
@@ -227,7 +227,7 @@ export default {
 
   CLOSING: {
     title: 'Your Journey to Healing Starts Now.',
-    text: 'Our recovery experts in Brooklyn, NY will help you move into your next stage of life in a spa-like state-of-the-art setting.',
+    text: 'Our Brooklyn team will help you take the next step in recovery while you keep up with work, school, and family.',
     cta: 'Verify Benefits',
     photo: 'dsc06278.webp',
   },
