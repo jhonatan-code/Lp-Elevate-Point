@@ -32,7 +32,7 @@ export default {
   PROGRAMS: {
     kicker: 'Luxury Treatment on Your Time',
     title: 'Outpatient Addiction Treatment in Brooklyn, New York',
-    text: ['Growth takes time. Healing requires patience.', 'We’ve got both, within a stunning environment designed to support flourishing at any age at our luxury rehab in Brooklyn, NYC.'],
+    text: ['Growth takes time. Healing requires patience.', 'We’ve got both, within a stunning environment designed to support healing for adults and teens at our outpatient center in Brooklyn.'],
     quote: '“We focus on personalized recovery through innovative treatment approaches.”',
     quoteBy: '– Elevate Point',
     items: [
