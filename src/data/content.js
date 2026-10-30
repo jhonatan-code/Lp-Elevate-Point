@@ -1,5 +1,6 @@
-// Copy of the live Google Ads LP, www.elevatepoint.org/drug-rehab-lp/ (page 1333), read 2026-10-29. Text is verbatim;
-// the order follows the page except where the all-projects page-end rule (FAQ → CTA → footer) moves a block up.
+// Copy of the live Google Ads LP, www.elevatepoint.org/drug-rehab-lp/ (page 1333), read 2026-10-29, revised with María's
+// pre-launch review (ClickUp 1dfm34xzcct, 2026-10-30): new H1 and stats, Why Elevate Point, team, steps, named
+// conditions, care schedules, one insurance section and more FAQs. Every added fact is from elevatepoint.org.
 // Links to the main site are replaced by in-page anchors: an Ads LP has no outbound links. "Learn More" buttons and
 // the empty "1 Elevate Point" counter of the live page are left out.
 

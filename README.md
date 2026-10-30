@@ -4,9 +4,9 @@ Google Ads landing page for Elevate Point (Brooklyn, NY). Migration of https://w
 (the only paid LP still live on the WordPress site) to Astro + Vercel, in a new design. Planned host:
 `lp.elevatepoint.org` (Ads LP at the root).
 
-- `/` = the live LP's copy, verbatim, in the new design ("Brooklyn greenhouse": forest/olive/sage tokens from the main
-  site, Manrope + Inter, moss-disc motif from the ceiling panels of the rooms).
-- `/v1/` = same design, content rewritten from the call insights (next step).
+- `/` = the live LP's copy in the new design ("Brooklyn greenhouse": forest/olive/sage tokens from the main site,
+  Manrope + Inter, moss-disc motif from the ceiling panels of the rooms), revised with María's pre-launch review
+  (ClickUp 1dfm34xzcct). The call-based `/v1/` was removed on 2026-10-30.
 - Copy: `src/data/content.js`; facts, phone and form options: `src/data/site.js`.
 - Lead form → `/api/lead` (CTM FormReactor proxy, tests in `tests/lead.test.mjs`) → `/thank-you/?sent=1`.
 - noindex meta + `X-Robots-Tag` on every response; no robots.txt, no sitemap, no outbound links.
