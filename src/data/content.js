@@ -179,6 +179,16 @@ export default {
     ],
   },
 
+  // How to get started, the three steps María wrote, before the FAQ (nothing may sit between the FAQ and the final CTA)
+  STEPS: {
+    title: 'How to Get Started',
+    items: [
+      { title: 'Call or text us', text: 'Reach admissions for a free, confidential consultation.' },
+      { title: 'We verify your benefits', text: 'We check your insurance for free and explain what it covers.' },
+      { title: 'Start treatment', text: 'Schedule your assessment and pick the program and schedule that fit.' },
+    ],
+  },
+
   // Map section (added 2026-10-29). Stations and lines are the subway stops around 203 Jay Street (A, C, F, R, 2, 3, 4,
   // 5: the live LP's "8+ subway lines near us"). Parking is from the live LP's facility text.
   LOCATION: {
