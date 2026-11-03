@@ -119,10 +119,11 @@ export default {
     text: 'At Elevate Point in Brooklyn, we designed our addiction treatment programs in NYC to be rooted in a client-first approach that utilizes dual-diagnosis approaches that treat the mind, body, and spirit.',
     cta: 'Get Started',
     // Each card names what it treats instead of repeating one feature list (María's review). Conditions and services
-    // are the ones with their own pages on elevatepoint.org.
+    // are the ones with their own pages on elevatepoint.org. Mental health is only treated together with substance use
+    // (dual diagnosis), never on its own (client correction 2026-11-03).
     items: [
       { title: 'Substance Use', text: 'Alcohol, opioids and fentanyl, cocaine, benzodiazepines, cannabis, meth, kratom and prescription drugs.', label: 'Includes:', features: ['Detox referrals when needed', 'PHP, IOP & OP', 'Medication-assisted treatment', 'Individual, group & family therapy'] },
-      { title: 'Mental Health', text: 'Depression, anxiety and panic, trauma and PTSD, bipolar disorder, OCD, ADHD, burnout and grief.', label: 'Includes:', features: ['Psychiatric evaluations', 'Medication management', 'CBT and DBT skills groups', 'Art therapy, yoga & mindfulness'] },
+      { title: 'Co-Occurring Mental Health', text: 'Depression, anxiety and panic, trauma and PTSD, bipolar disorder, OCD, ADHD, burnout and grief, treated alongside a substance use disorder.', label: 'Includes:', features: ['Psychiatric evaluations', 'Medication management', 'CBT and DBT skills groups', 'Art therapy, yoga & mindfulness'] },
       { title: 'Dual Diagnosis', text: 'When addiction and a mental health condition feed each other, we treat both together in one plan.', label: 'Includes:', features: ['One integrated treatment plan', 'Inpatient referrals when needed', 'Day & evening schedules', 'In-person & virtual care'] },
     ],
   },
@@ -213,7 +214,7 @@ export default {
     // ages and days come from the program pages on elevatepoint.org; the IOP track times are the examples given there.
     // The first answer's "click the contact button" points at the form on this page; the number follows PHONE.
     items: [
-      { q: 'How do I enroll in a program at Elevate Point?', a: 'Enrolling in an Elevate Point treatment program is easy. If you’re looking for a trusted drug rehab in Brooklyn, NY or mental health treatment, just click the contact button or call {phone} and a member of our team will help you determine the best program for your needs or the needs of your teen.' },
+      { q: 'How do I enroll in a program at Elevate Point?', a: 'Enrolling in an Elevate Point treatment program is easy. If you’re looking for a trusted drug rehab in Brooklyn, NY or dual-diagnosis treatment for addiction and mental health, just click the contact button or call {phone} and a member of our team will help you determine the best program for your needs or the needs of your teen.' },
       { q: 'How long do the programs at Elevate Point last?', a: 'Most people start in PHP or IOP and step down to outpatient as they progress. PHP meets 5–6 days a week; IOP meets 3–5 days a week for 3–5 hours a day. How long you stay at each level depends on your progress, and your clinical team reviews it with you as you go.' },
       { q: 'Do you offer evening hours?', a: 'Yes. IOP runs in morning, afternoon and evening tracks, for example 9:00 AM–12:30 PM, 1:00–4:30 PM or 5:30–8:30 PM, so you can keep working or studying. PHP meets during the day and you go home each evening.' },
       { q: 'Do you treat teens?', a: 'Yes. Our adolescent IOP and outpatient programs are for ages 13–17. Teen IOP is 3–5 sessions a week, 9–12 hours in total, after school or in the evening, and families take part through family therapy.' },
@@ -221,7 +222,7 @@ export default {
       { q: 'Do you offer detox?', a: 'We are an outpatient program and do not provide detox on site. If you need medical detox or inpatient care first, we refer you, and you can continue with us afterward.' },
       { q: 'How much does treatment cost?', a: 'It depends on your plan and your level of care. We work with PPO and POS plans that have out-of-network benefits, and admissions verifies yours for free, including deductibles, co-pays and preauthorization, before you start. Self-pay is also available.' },
       { q: 'Is my participation in the program confidential?', a: 'Yes. Your privacy is our priority. We follow strict confidentiality standards and your information and treatment details are well-protected.' },
-      { q: 'Do you accept insurance for treatment at Elevate Point?', a: 'Yes. We work with most major commercial insurance carriers that offer out-of-network coverage for substance abuse & mental health treatment.' },
+      { q: 'Do you accept insurance for treatment at Elevate Point?', a: 'Yes. We work with most major commercial insurance carriers that offer out-of-network coverage for substance use and co-occurring mental health treatment.' },
     ],
   },
 
