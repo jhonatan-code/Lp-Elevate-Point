@@ -94,9 +94,9 @@ export default {
     title: 'Why Elevate Point',
     text: 'What sets our Brooklyn program apart, at a glance.',
     items: [
-      { icon: 'school', title: 'A separate teen track', text: 'Adolescent IOP and outpatient for ages 13–17, scheduled after school, with family therapy built in.' },
-      { icon: 'clock', title: 'Day and evening schedules', text: 'Morning, afternoon and evening IOP tracks, so treatment fits around work or school.' },
-      { icon: 'video', title: 'In-person and virtual care', text: 'Come to our center or join sessions from home when you need to.' },
+      { icon: 'school', title: 'A separate teen track', text: 'Adolescent IOP and outpatient for ages 12–17, scheduled after school, with family therapy built in.' },
+      { icon: 'clock', title: 'Day and evening schedules', text: 'Daytime and evening IOP tracks, so treatment fits around work or school.' },
+      { icon: 'brain', title: 'Evidence-Based Therapies', text: 'Proven methods like CBT and DBT, in individual, group and family therapy.' },
       { icon: 'pin', title: 'Easy to reach', text: 'Downtown Brooklyn, near four subway stations, with on-site parking for clients and visitors.' },
       { icon: 'puzzle', title: 'A plan built for you', text: 'Personalized treatment plans from a clinical team led by an addiction psychiatrist.' },
       { icon: 'leaf', title: 'A space that helps you heal', text: 'Biophilic design, floor-to-ceiling windows and an outdoor terrace lined with greenery.' },
