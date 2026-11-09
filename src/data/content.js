@@ -112,15 +112,14 @@ export default {
   TREAT: {
     kicker: 'What We Treat',
     title: 'What We Treat',
-    text: 'At Elevate Point in Brooklyn, we designed our addiction treatment programs in NYC to be rooted in a client-first approach that utilizes dual-diagnosis approaches that treat the mind, body, and spirit.',
+    text: 'At Elevate Point in Brooklyn, we designed our addiction treatment programs in NYC to be rooted in a client-first approach that treats substance use together with co\u2011occurring mental health conditions, caring for the mind, body, and spirit.',
     cta: 'Get Started',
     // Each card names what it treats instead of repeating one feature list (María's review). Conditions and services
-    // are the ones with their own pages on elevatepoint.org. Mental health is only treated together with substance use
-    // (dual diagnosis), never on its own (client correction 2026-11-03).
+    // are the ones with their own pages on elevatepoint.org. Mental health is only treated together with substance use,
+    // never on its own (client correction 2026-11-03); the separate "Dual Diagnosis" card was removed (2026-11-04).
     items: [
       { title: 'Substance Use', text: 'Alcohol, opioids and fentanyl, cocaine, benzodiazepines, cannabis, meth, kratom and prescription drugs.', label: 'Includes:', features: ['Detox referrals when needed', 'PHP, IOP & OP', 'Medication-assisted treatment', 'Individual, group & family therapy'] },
       { title: 'Co-Occurring Mental Health', text: 'Depression, anxiety and panic, trauma and PTSD, bipolar disorder, OCD, ADHD, burnout and grief, treated alongside a substance use disorder.', label: 'Includes:', features: ['Psychiatric evaluations', 'Medication management', 'CBT and DBT skills groups', 'Art therapy, yoga & mindfulness'] },
-      { title: 'Dual Diagnosis', text: 'When addiction and a mental health condition feed each other, we treat both together in one plan.', label: 'Includes:', features: ['One integrated treatment plan', 'Inpatient referrals when needed', 'Day & evening schedules', 'In-person & virtual care'] },
     ],
   },
 
