@@ -79,7 +79,7 @@ export default {
     text: 'At Elevate Point, we believe recovery should be compassionate, personalized, and empowering. As a trusted drug rehab in NYC, we combine evidence-based treatment, expert clinical care, and a welcoming environment to help clients heal and thrive. Our approach is built on understanding each person’s unique story, because lasting recovery starts with truly being seen and supported.',
     // Schedules from the client (ClickUp 1dfm34y0tf8, 2026-11-04); the per-level therapy lists were removed at their request.
     items: [
-      { abbr: 'PHP', title: 'Partial Hospitalization (PHP)', text: 'For those needing more robust support, our PHP offers daily intensive treatment in a tranquil environment.',
+      { abbr: 'PHP', title: 'Partial Hospitalization (PHP)', text: 'For those needing more robust support, our PHP offers daily intensive treatment in a tranquil\u00A0environment.',
         schedule: ['5 days a week, Monday–Friday, 9:30\u00a0AM\u2060–\u20601:30\u00a0PM'] },
       { abbr: 'IOP', title: 'Intensive Outpatient (IOP)', text: 'Elevate Point’s IOP fits around your schedule, allowing you to uphold work, family, or school commitments while engaging in structured, evidence-based care.',
         schedule: ['3 days a week', 'Daytime: 10:00\u00a0AM\u2060–\u20601:00\u00a0PM, Monday, Tuesday & Thursday', 'Evening: 6:00\u2060–\u20609:00\u00a0PM, Monday, Wednesday & Thursday'] },
@@ -98,8 +98,8 @@ export default {
       { icon: 'clock', title: 'Day and evening schedules', text: 'Daytime and evening IOP tracks, so treatment fits around work or school.' },
       { icon: 'brain', title: 'Evidence-Based Therapies', text: 'Proven methods like CBT and DBT, in individual, group and family therapy.' },
       { icon: 'pin', title: 'Easy to reach', text: 'Downtown Brooklyn, near four subway stations, with on-site parking for clients and visitors.' },
-      { icon: 'puzzle', title: 'A plan built for you', text: 'Personalized treatment plans from a clinical team led by an addiction psychiatrist.' },
-      { icon: 'leaf', title: 'A space that helps you heal', text: 'Biophilic design, floor-to-ceiling windows and an outdoor terrace lined with greenery.' },
+      { icon: 'puzzle', title: 'A plan built for you', text: 'Personalized treatment plans from a clinical team led by an addiction\u00A0psychiatrist.' },
+      { icon: 'leaf', title: 'A space that helps you heal', text: 'Biophilic design, floor-to-ceiling windows and an outdoor terrace lined with\u00A0greenery.' },
     ],
   },
 
@@ -126,7 +126,7 @@ export default {
   FACILITY: {
     kicker: 'modern facilities in Brooklyn',
     title: 'We Elevated Treatment to a Whole New Level',
-    text: 'From the moment you arrive at Elevate Point, you’re greeted with a sense of comfort and ease. The doorman lobby creates a welcoming and secure entry, setting the tone for the experience inside. Convenient on-site parking ensures clients and visitors can access the facility effortlessly, making every arrival simple and stress-free.',
+    text: 'From the moment you arrive at Elevate Point, you’re greeted with a sense of comfort and ease. The doorman lobby creates a welcoming and secure entry, setting the tone for the experience inside. Convenient on-site parking ensures clients and visitors can access the facility effortlessly, making every arrival simple and\u00A0stress-free.',
     // Fixed from the live page: "tenants" and "greenary" (typos), "residents" → "clients" (it's outpatient), and the
     // unsupported "one of the best neighborhoods in NYC" cut (María's review)
     items: [
