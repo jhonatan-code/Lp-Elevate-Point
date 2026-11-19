@@ -13,6 +13,14 @@ export const ORG = {
 
 // CTM tracking number for this LP (given 2026-10-29 in ClickUp 1dfm34xzcct). The live LP's buttons show 646.566.0140
 // and its header the main line 646.760.7324; neither is used here (paid calls stay in their own channel).
+// HIPAA standard 4.10: the Privacy Policy and Notice of Privacy Practices are linked in the footer and next to every
+// form. The LP has no legal pages of its own, so these are the only links that leave it (compliance beats the
+// no-outbound-links rule for Ads LPs).
+export const LEGAL = {
+  privacy: 'https://www.elevatepoint.org/privacy-policy/',
+  npp: 'https://www.elevatepoint.org/notice-of-privacy-practices/',
+};
+
 export const PHONE = { display: '(646) 733-4950', href: 'tel:+16467334950' };
 
 // SMS line for "Text Us" (the live LP's header button), on the LP's tracking number.

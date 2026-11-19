@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { GTM_ID, ORG } from '../data/site.js';
+import { GTM_ID, ORG, LEGAL } from '../data/site.js';
 import CookieConsent from '../components/CookieConsent.astro';
 import A11yWidget from '../components/A11yWidget.astro';
 import Reveal from '../components/Reveal.astro';
@@ -114,6 +114,6 @@ const fontFaces = [
     <A11yWidget />
     <Reveal />
     {/* elev8.io consent standard; elevatepoint_consent is shared across .elevatepoint.org */}
-    <CookieConsent prefix="elevatepoint" privacyHref="" primary="#1f4941" primaryDark="#143530" text="#143530" tint="#f1f4e8" titleFont="'Manrope Variable', Arial, sans-serif" cookieDomain=".elevatepoint.org" functionalText="Loads embedded content such as maps or videos, which may set their own cookies." />
+    <CookieConsent prefix="elevatepoint" privacyHref={LEGAL.privacy} primary="#1f4941" primaryDark="#143530" text="#143530" tint="#f1f4e8" titleFont="'Manrope Variable', Arial, sans-serif" cookieDomain=".elevatepoint.org" functionalText="Loads embedded content such as maps or videos, which may set their own cookies." />
   </body>
 </html>

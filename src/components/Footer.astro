@@ -1,9 +1,9 @@
 ---
 // Footer: white logo, address, phone, NYS OASAS logo (shown on elevatepoint.org), cookie controls and the elev8.io
-// credit (plain text: an Ads LP has no outbound links).
+// credit (plain text: the only outbound links are the two legal pages HIPAA requires).
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
-import { ORG, PHONE } from '../data/site.js';
+import { ORG, PHONE, LEGAL } from '../data/site.js';
 import logo from '../assets/brand/logo-white.webp';
 import oasas from '../assets/brand/oasas.webp';
 interface Props { onPhoto?: boolean }
@@ -22,6 +22,8 @@ const year = new Date().getFullYear();
   <div class="container ftr-legal">
     <p>© {year} {ORG.long}. All rights reserved.</p>
     <div class="ftr-links">
+      <a class="ftr-btn" href={LEGAL.privacy}>Privacy Policy</a>
+      <a class="ftr-btn" href={LEGAL.npp}>Notice of Privacy Practices</a>
       <button type="button" class="ftr-btn" data-cookie-prefs>Cookie settings</button>
       <button type="button" class="ftr-btn" data-cookie-dns>Do Not Sell or Share My Personal Information</button>
     </div>
